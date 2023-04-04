@@ -10,6 +10,7 @@ import android.content.*;
 import android.content.SharedPreferences;
 import android.content.res.*;
 import android.graphics.*;
+import android.graphics.Typeface;
 import android.graphics.drawable.*;
 import android.media.*;
 import android.net.*;
@@ -36,6 +37,10 @@ import java.util.regex.*;
 import org.json.*;
 
 public class ManageActivity extends Activity {
+	
+	private double YT_Visb = 0;
+	private double YM_Visb = 0;
+	private double MG_Visb = 0;
 	
 	private LinearLayout linear1;
 	private ScrollView vscroll1;
@@ -80,10 +85,20 @@ public class ManageActivity extends Activity {
 	private TextView textview14;
 	private TextView textview15;
 	private TextView textview16;
+	private LinearLayout linear52;
+	private LinearLayout linear51;
+	private LinearLayout linear50;
+	private LinearLayout linear49;
+	private LinearLayout linear48;
+	private LinearLayout linear47;
 	private LinearLayout linear29;
+	private ImageView imageview11;
+	private ImageView imageview10;
+	private ImageView imageview9;
+	private ImageView imageview8;
 	private LinearLayout linear21;
 	private LinearLayout linear22;
-	private LinearLayout linear23;
+	private LinearLayout linear53;
 	private LinearLayout linear24;
 	private LinearLayout linear25;
 	private LinearLayout linear26;
@@ -100,9 +115,20 @@ public class ManageActivity extends Activity {
 	private TextView textview20;
 	private TextView textview21;
 	private TextView textview22;
+	private LinearLayout linear54;
+	private LinearLayout linear55;
+	private LinearLayout linear56;
+	private LinearLayout linear57;
+	private LinearLayout linear58;
+	private LinearLayout linear59;
+	private LinearLayout linear60;
+	private ImageView imageview12;
+	private ImageView imageview13;
+	private ImageView imageview14;
+	private ImageView imageview15;
 	private LinearLayout linear33;
 	private LinearLayout linear35;
-	private LinearLayout linear34;
+	private LinearLayout linear61;
 	private LinearLayout linear36;
 	private LinearLayout linear37;
 	private LinearLayout linear38;
@@ -119,6 +145,17 @@ public class ManageActivity extends Activity {
 	private TextView textview26;
 	private TextView textview27;
 	private TextView textview28;
+	private LinearLayout linear62;
+	private LinearLayout linear63;
+	private LinearLayout linear64;
+	private LinearLayout linear65;
+	private LinearLayout linear66;
+	private LinearLayout linear67;
+	private LinearLayout linear68;
+	private ImageView imageview16;
+	private ImageView imageview17;
+	private ImageView imageview18;
+	private ImageView imageview19;
 	
 	private SharedPreferences Settings;
 	
@@ -174,10 +211,20 @@ public class ManageActivity extends Activity {
 		textview14 = findViewById(R.id.textview14);
 		textview15 = findViewById(R.id.textview15);
 		textview16 = findViewById(R.id.textview16);
+		linear52 = findViewById(R.id.linear52);
+		linear51 = findViewById(R.id.linear51);
+		linear50 = findViewById(R.id.linear50);
+		linear49 = findViewById(R.id.linear49);
+		linear48 = findViewById(R.id.linear48);
+		linear47 = findViewById(R.id.linear47);
 		linear29 = findViewById(R.id.linear29);
+		imageview11 = findViewById(R.id.imageview11);
+		imageview10 = findViewById(R.id.imageview10);
+		imageview9 = findViewById(R.id.imageview9);
+		imageview8 = findViewById(R.id.imageview8);
 		linear21 = findViewById(R.id.linear21);
 		linear22 = findViewById(R.id.linear22);
-		linear23 = findViewById(R.id.linear23);
+		linear53 = findViewById(R.id.linear53);
 		linear24 = findViewById(R.id.linear24);
 		linear25 = findViewById(R.id.linear25);
 		linear26 = findViewById(R.id.linear26);
@@ -194,9 +241,20 @@ public class ManageActivity extends Activity {
 		textview20 = findViewById(R.id.textview20);
 		textview21 = findViewById(R.id.textview21);
 		textview22 = findViewById(R.id.textview22);
+		linear54 = findViewById(R.id.linear54);
+		linear55 = findViewById(R.id.linear55);
+		linear56 = findViewById(R.id.linear56);
+		linear57 = findViewById(R.id.linear57);
+		linear58 = findViewById(R.id.linear58);
+		linear59 = findViewById(R.id.linear59);
+		linear60 = findViewById(R.id.linear60);
+		imageview12 = findViewById(R.id.imageview12);
+		imageview13 = findViewById(R.id.imageview13);
+		imageview14 = findViewById(R.id.imageview14);
+		imageview15 = findViewById(R.id.imageview15);
 		linear33 = findViewById(R.id.linear33);
 		linear35 = findViewById(R.id.linear35);
-		linear34 = findViewById(R.id.linear34);
+		linear61 = findViewById(R.id.linear61);
 		linear36 = findViewById(R.id.linear36);
 		linear37 = findViewById(R.id.linear37);
 		linear38 = findViewById(R.id.linear38);
@@ -213,6 +271,17 @@ public class ManageActivity extends Activity {
 		textview26 = findViewById(R.id.textview26);
 		textview27 = findViewById(R.id.textview27);
 		textview28 = findViewById(R.id.textview28);
+		linear62 = findViewById(R.id.linear62);
+		linear63 = findViewById(R.id.linear63);
+		linear64 = findViewById(R.id.linear64);
+		linear65 = findViewById(R.id.linear65);
+		linear66 = findViewById(R.id.linear66);
+		linear67 = findViewById(R.id.linear67);
+		linear68 = findViewById(R.id.linear68);
+		imageview16 = findViewById(R.id.imageview16);
+		imageview17 = findViewById(R.id.imageview17);
+		imageview18 = findViewById(R.id.imageview18);
+		imageview19 = findViewById(R.id.imageview19);
 		Settings = getSharedPreferences("getSettings", Activity.MODE_PRIVATE);
 		
 		switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -241,13 +310,127 @@ public class ManageActivity extends Activity {
 				_Popup();
 			}
 		});
+		
+		linear30.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				if (YT_Visb == 0) {
+					YT_Visb = 1;
+					linear11.setVisibility(View.VISIBLE);
+					linear13.setVisibility(View.VISIBLE);
+					imageview3.setImageResource(R.drawable.ic_arrow_drop_up_black);
+					if (Settings.getString("themes", "").equals("black")) {
+						_ColorFilter(imageview3, "#ffffff");
+					}
+				}
+				else {
+					YT_Visb = 0;
+					linear11.setVisibility(View.GONE);
+					linear13.setVisibility(View.GONE);
+					imageview3.setImageResource(R.drawable.ic_arrow_drop_down_black);
+					if (Settings.getString("themes", "").equals("black")) {
+						_ColorFilter(imageview3, "#ffffff");
+					}
+				}
+			}
+		});
+		
+		linear31.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				if (YM_Visb == 0) {
+					YM_Visb = 1;
+					linear22.setVisibility(View.VISIBLE);
+					linear53.setVisibility(View.VISIBLE);
+					imageview4.setImageResource(R.drawable.ic_arrow_drop_up_black);
+					if (Settings.getString("themes", "").equals("black")) {
+						_ColorFilter(imageview4, "#ffffff");
+					}
+				}
+				else {
+					YM_Visb = 0;
+					linear22.setVisibility(View.GONE);
+					linear53.setVisibility(View.GONE);
+					imageview4.setImageResource(R.drawable.ic_arrow_drop_down_black);
+					if (Settings.getString("themes", "").equals("black")) {
+						_ColorFilter(imageview4, "#ffffff");
+					}
+				}
+			}
+		});
+		
+		linear39.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				if (MG_Visb == 0) {
+					MG_Visb = 1;
+					linear35.setVisibility(View.VISIBLE);
+					linear61.setVisibility(View.VISIBLE);
+					imageview6.setImageResource(R.drawable.ic_arrow_drop_up_black);
+					if (Settings.getString("themes", "").equals("black")) {
+						_ColorFilter(imageview6, "#ffffff");
+					}
+				}
+				else {
+					MG_Visb = 0;
+					linear35.setVisibility(View.GONE);
+					linear61.setVisibility(View.GONE);
+					imageview6.setImageResource(R.drawable.ic_arrow_drop_down_black);
+					if (Settings.getString("themes", "").equals("black")) {
+						_ColorFilter(imageview6, "#ffffff");
+					}
+				}
+			}
+		});
 	}
 	
 	private void initializeLogic() {
 		Settings.edit().putString("themes", "light").commit();
 		_LightTheme();
+		_DefaultVisibleity();
+		YT_Visb = 1;
+		YM_Visb = 0;
+		MG_Visb = 0;
 	}
 	
+	@Override
+	public void onBackPressed() {
+		final AlertDialog dialog1 = new AlertDialog.Builder(ManageActivity.this).create();
+		View inflate = getLayoutInflater().inflate(R.layout.bottom_sheet_p2,null); 
+		dialog1.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+		dialog1.setView(inflate);
+		TextView t1 = (TextView) inflate.findViewById(R.id.t1);
+		
+		TextView t2 = (TextView) inflate.findViewById(R.id.t2);
+		
+		TextView b1 = (TextView) inflate.findViewById(R.id.b1);
+		
+		TextView b2 = (TextView) inflate.findViewById(R.id.b2);
+		
+		LinearLayout bg = (LinearLayout) inflate.findViewById(R.id.bg);
+		t1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+		t2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), 0);
+		b1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+		b2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+		t1.setText("Wanna Quit ?");
+		t2.setText("Are you sure to exit from application !!");
+		b1.setText("No, Stay");
+		b2.setText("Yes, Quit");
+		_rippleRoundStroke(bg, "#FFFFFF", "#000000", 15, 0, "#000000");
+		_rippleRoundStroke(b1, "#F5F5F5", "#E0E0E0", 15, 0, "#000000");
+		_rippleRoundStroke(b2, "#304ffe", "#40FFFFFF", 15, 0, "#000000");
+		b1.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
+				dialog1.dismiss();
+				SketchwareUtil.showMessage(getApplicationContext(), "button1 Press");
+			}
+		});
+		b2.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
+				finish();
+			}
+		});
+		dialog1.setCancelable(true);
+		dialog1.show();
+	}
 	public void _status_bar_color(final String _colour1, final String _colour2) {
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) { 
 			   Window w = this.getWindow(); w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS); w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -266,6 +449,18 @@ public class ManageActivity extends Activity {
 			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFFE0E0E0);
 		}
 		Settings.edit().putString("themes", "light").commit();
+		_ColorFilter(imageview8, "#304ffe");
+		_ColorFilter(imageview9, "#304ffe");
+		_ColorFilter(imageview10, "#304ffe");
+		_ColorFilter(imageview11, "#304ffe");
+		_ColorFilter(imageview12, "#304ffe");
+		_ColorFilter(imageview13, "#304ffe");
+		_ColorFilter(imageview14, "#304ffe");
+		_ColorFilter(imageview15, "#304ffe");
+		_ColorFilter(imageview16, "#304ffe");
+		_ColorFilter(imageview17, "#304ffe");
+		_ColorFilter(imageview18, "#304ffe");
+		_ColorFilter(imageview19, "#304ffe");
 		imageview3.setColorFilter(0xFF000000, PorterDuff.Mode.MULTIPLY);
 		imageview4.setColorFilter(0xFF000000, PorterDuff.Mode.MULTIPLY);
 		imageview6.setColorFilter(0xFF000000, PorterDuff.Mode.MULTIPLY);
@@ -304,14 +499,30 @@ public class ManageActivity extends Activity {
 		textview23.setTextColor(0xFF000000);
 		textview24.setTextColor(0xFF000000);
 		textview25.setTextColor(0xFF000000);
-		_GradientDrawable(linear30, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
-		_GradientDrawable(linear31, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
-		_GradientDrawable(linear39, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
-		_GradientDrawable(linear46, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
 		_ColorFilter(imageview3, "#000000");
 		_ColorFilter(imageview4, "#000000");
 		_ColorFilter(imageview6, "#000000");
 		_ColorFilter(imageview7, "#000000");
+		_GradientDrawable(linear30, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear31, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear39, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear46, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear48, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear50, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear52, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear29, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear54, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear56, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear58, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear60, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear54, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear56, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear58, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear60, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear62, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear64, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear66, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear68, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
 	}
 	
 	
@@ -340,18 +551,18 @@ public class ManageActivity extends Activity {
 		textview5.setTextColor(0xFFFFFFFF);
 		textview7.setTextColor(0xFFFFFFFF);
 		textview9.setTextColor(0xFFFFFFFF);
-		textview14.setTextColor(0xFF304FFE);
-		textview15.setTextColor(0xFF42A5F5);
-		textview16.setTextColor(0xFF42A5F5);
-		textview20.setTextColor(0xFF42A5F5);
-		textview21.setTextColor(0xFF42A5F5);
-		textview22.setTextColor(0xFF42A5F5);
-		textview20.setTextColor(0xFF42A5F5);
-		textview21.setTextColor(0xFF42A5F5);
-		textview22.setTextColor(0xFF42A5F5);
-		textview26.setTextColor(0xFF42A5F5);
-		textview27.setTextColor(0xFF42A5F5);
-		textview28.setTextColor(0xFF42A5F5);
+		textview14.setTextColor(0xFF3D5AFE);
+		textview15.setTextColor(0xFF3D5AFE);
+		textview16.setTextColor(0xFF3D5AFE);
+		textview20.setTextColor(0xFF3D5AFE);
+		textview21.setTextColor(0xFF3D5AFE);
+		textview22.setTextColor(0xFF3D5AFE);
+		textview20.setTextColor(0xFF3D5AFE);
+		textview21.setTextColor(0xFF3D5AFE);
+		textview22.setTextColor(0xFF3D5AFE);
+		textview26.setTextColor(0xFF3D5AFE);
+		textview27.setTextColor(0xFF3D5AFE);
+		textview28.setTextColor(0xFF304FFE);
 		textview11.setTextColor(0xFFFFFFFF);
 		textview12.setTextColor(0xFFFFFFFF);
 		textview13.setTextColor(0xFFFFFFFF);
@@ -361,14 +572,30 @@ public class ManageActivity extends Activity {
 		textview23.setTextColor(0xFFFFFFFF);
 		textview24.setTextColor(0xFFFFFFFF);
 		textview25.setTextColor(0xFFFFFFFF);
-		_GradientDrawable(linear30, 25, 00, 00, "#454545", "#ffffff", true, true, 1000);
-		_GradientDrawable(linear31, 25, 00, 00, "#454545", "#ffffff", true, true, 1000);
-		_GradientDrawable(linear39, 25, 00, 00, "#454545", "#ffffff", true, true, 1000);
-		_GradientDrawable(linear46, 25, 00, 00, "#454545", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear30, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear31, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear39, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear46, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
 		_ColorFilter(imageview3, "#ffffff");
 		_ColorFilter(imageview4, "#ffffff");
 		_ColorFilter(imageview6, "#ffffff");
 		_ColorFilter(imageview7, "#ffffff");
+		_GradientDrawable(linear48, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear50, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear52, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear29, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear54, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear56, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear58, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear60, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear54, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear56, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear58, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear60, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear62, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear64, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear66, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
+		_GradientDrawable(linear68, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
 	}
 	
 	
@@ -462,7 +689,7 @@ public class ManageActivity extends Activity {
 			gd.setStroke((int)_stroke,Color.parseColor(_borderColor));
 			if (Build.VERSION.SDK_INT >= 21){
 				_view.setElevation((int)_shadow);}
-			android.content.res.ColorStateList clrb = new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{Color.parseColor("#9E9E9E")});
+			android.content.res.ColorStateList clrb = new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{Color.parseColor("#304FFE")});
 			android.graphics.drawable.RippleDrawable ripdrb = new android.graphics.drawable.RippleDrawable(clrb , gd, null);
 			_view.setClickable(true);
 			_view.setBackground(ripdrb);
@@ -525,6 +752,25 @@ public class ManageActivity extends Activity {
 	
 	public void _ColorFilter(final ImageView _view, final String _color) {
 		_view.getDrawable().setColorFilter(Color.parseColor(_color), PorterDuff.Mode.SRC_IN);
+	}
+	
+	
+	public void _DefaultVisibleity() {
+		linear22.setVisibility(View.GONE);
+		linear53.setVisibility(View.GONE);
+		linear35.setVisibility(View.GONE);
+		linear61.setVisibility(View.GONE);
+	}
+	
+	
+	public void _rippleRoundStroke(final View _view, final String _focus, final String _pressed, final double _round, final double _stroke, final String _strokeclr) {
+		android.graphics.drawable.GradientDrawable GG = new android.graphics.drawable.GradientDrawable();
+		GG.setColor(Color.parseColor(_focus));
+		GG.setCornerRadius((float)_round);
+		GG.setStroke((int) _stroke,
+		Color.parseColor("#" + _strokeclr.replace("#", "")));
+		android.graphics.drawable.RippleDrawable RE = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{ Color.parseColor(_pressed)}), GG, null);
+		_view.setBackground(RE);
 	}
 	
 	

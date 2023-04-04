@@ -58,7 +58,7 @@
 				android:focusable="false"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:src="@drawable/ic_developer_mode_black"
+				android:src="@drawable/ic_perm_device_info_black"
 				android:scaleType="center" />
 			<TextView
 				android:id="@+id/txt2"
