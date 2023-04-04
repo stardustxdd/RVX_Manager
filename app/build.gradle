@@ -8,7 +8,7 @@ android {
 	useLibrary 'org.apache.http.legacy'
 	
 	defaultConfig {
-		applicationId "app.rvx.miracle"
+		applicationId "app.rvx.manager.miracle"
 		minSdkVersion 21
 		targetSdkVersion 28
 		versionCode 1

@@ -1,4 +1,4 @@
-package app.rvx.miracle;
+package app.rvx.manager.miracle;
 import android.app.*;
 import android.content.*;
 import android.graphics.drawable.*;

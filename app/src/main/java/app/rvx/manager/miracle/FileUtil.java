@@ -1,4 +1,4 @@
-package app.rvx.miracle;
+package app.rvx.manager.miracle;
 
 import android.content.ContentResolver;
 import android.content.ContentUris;
