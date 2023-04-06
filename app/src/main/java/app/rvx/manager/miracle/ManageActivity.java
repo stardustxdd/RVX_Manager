@@ -24,6 +24,7 @@ import android.view.View.*;
 import android.view.animation.*;
 import android.webkit.*;
 import android.widget.*;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -88,6 +89,7 @@ public class ManageActivity extends AppCompatActivity {
 	private LinearLayout linear43;
 	private LinearLayout linear70;
 	private LinearLayout linear71;
+	private Button button1;
 	private Switch switch1;
 	private LinearLayout linear44;
 	private LinearLayout linear45;
@@ -208,6 +210,8 @@ public class ManageActivity extends AppCompatActivity {
 	private RequestNetwork.RequestListener _net_request_listener;
 	private TimerTask timer;
 	private Intent intent = new Intent();
+	private RequestNetwork Connection;
+	private RequestNetwork.RequestListener _Connection_request_listener;
 	
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -232,6 +236,7 @@ public class ManageActivity extends AppCompatActivity {
 		linear43 = findViewById(R.id.linear43);
 		linear70 = findViewById(R.id.linear70);
 		linear71 = findViewById(R.id.linear71);
+		button1 = findViewById(R.id.button1);
 		switch1 = findViewById(R.id.switch1);
 		linear44 = findViewById(R.id.linear44);
 		linear45 = findViewById(R.id.linear45);
@@ -348,6 +353,56 @@ public class ManageActivity extends AppCompatActivity {
 		textview30 = findViewById(R.id.textview30);
 		Settings = getSharedPreferences("getSettings", Activity.MODE_PRIVATE);
 		net = new RequestNetwork(this);
+		Connection = new RequestNetwork(this);
+		
+		button1.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				final com.google.android.material.bottomsheet.BottomSheetDialog bottomSheetDialog = new com.google.android.material.bottomsheet.BottomSheetDialog(ManageActivity.this);
+				
+				View bottomSheetView; bottomSheetView = getLayoutInflater().inflate(R.layout.no_internet,null );
+				bottomSheetDialog.setContentView(bottomSheetView);
+				
+				bottomSheetDialog.getWindow().findViewById(R.id.design_bottom_sheet).setBackgroundResource(android.R.color.transparent);
+				TextView t1 = (TextView) bottomSheetView.findViewById(R.id.t1);
+				
+				TextView t2 = (TextView) bottomSheetView.findViewById(R.id.t2);
+				
+				TextView b1 = (TextView) bottomSheetView.findViewById(R.id.b1);
+				
+				TextView b2 = (TextView) bottomSheetView.findViewById(R.id.b2);
+				
+				ImageView i1 = (ImageView) bottomSheetView.findViewById(R.id.i1);
+				
+				LinearLayout bg = (LinearLayout) bottomSheetView.findViewById(R.id.bg);
+				t1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+				t2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), 0);
+				b1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+				b2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+				i1.setImageResource(R.drawable.thumb_1);
+				t1.setText("Disconnected From Internet !");
+				t2.setText("Sorry you can't connect to this project at this moment. please try again later.");
+				b1.setText("Cancel");
+				b2.setText("Try again");
+				_RoundAndBorder(i1, "#D50000", 0, "#D50000", 100);
+				_rippleRoundStroke(bg, "#FFFFFF", "#000000", 15, 0, "#000000");
+				_rippleRoundStroke(b1, "#FFFFFF", "#EEEEEE", 15, 2.5d, "#EEEEEE");
+				_rippleRoundStroke(b2, "#D50000", "#40FFFFFF", 15, 0, "#000000");
+				i1.setElevation((float)0.1d);
+				_ICC(i1, "#FFFFFF", "#FFFFFF");
+				b1.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
+						bottomSheetDialog.dismiss();
+						SketchwareUtil.showMessage(getApplicationContext(), "button1 Press");
+					}
+				});
+				b2.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
+						SketchwareUtil.showMessage(getApplicationContext(), "button2 Press");
+					}
+				});
+				bottomSheetDialog.setCancelable(true);
+				bottomSheetDialog.show();
+			}
+		});
 		
 		switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
@@ -563,6 +618,68 @@ public class ManageActivity extends AppCompatActivity {
 				
 			}
 		};
+		
+		_Connection_request_listener = new RequestNetwork.RequestListener() {
+			@Override
+			public void onResponse(String _param1, String _param2, HashMap<String, Object> _param3) {
+				final String _tag = _param1;
+				final String _response = _param2;
+				final HashMap<String, Object> _responseHeaders = _param3;
+				_telegramLoaderDialog(false);
+			}
+			
+			@Override
+			public void onErrorResponse(String _param1, String _param2) {
+				final String _tag = _param1;
+				final String _message = _param2;
+				_telegramLoaderDialog(false);
+				final com.google.android.material.bottomsheet.BottomSheetDialog bottomSheetDialog = new com.google.android.material.bottomsheet.BottomSheetDialog(ManageActivity.this);
+				
+				View bottomSheetView; bottomSheetView = getLayoutInflater().inflate(R.layout.no_internet,null );
+				bottomSheetDialog.setContentView(bottomSheetView);
+				
+				bottomSheetDialog.getWindow().findViewById(R.id.design_bottom_sheet).setBackgroundResource(android.R.color.transparent);
+				TextView t1 = (TextView) bottomSheetView.findViewById(R.id.t1);
+				
+				TextView t2 = (TextView) bottomSheetView.findViewById(R.id.t2);
+				
+				TextView b1 = (TextView) bottomSheetView.findViewById(R.id.b1);
+				
+				TextView b2 = (TextView) bottomSheetView.findViewById(R.id.b2);
+				
+				ImageView i1 = (ImageView) bottomSheetView.findViewById(R.id.i1);
+				
+				LinearLayout bg = (LinearLayout) bottomSheetView.findViewById(R.id.bg);
+				t1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+				t2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), 0);
+				b1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+				b2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+				i1.setImageResource(R.drawable.thumb_1);
+				t1.setText("Disconnected From Internet !");
+				t2.setText("Sorry you can't connect to this project at this moment. please try again later.");
+				b1.setText("Cancel");
+				b2.setText("Try again");
+				_RoundAndBorder(i1, "#D50000", 0, "#D50000", 100);
+				_rippleRoundStroke(bg, "#FFFFFF", "#000000", 15, 0, "#000000");
+				_rippleRoundStroke(b1, "#FFFFFF", "#EEEEEE", 15, 2.5d, "#EEEEEE");
+				_rippleRoundStroke(b2, "#D50000", "#40FFFFFF", 15, 0, "#000000");
+				i1.setElevation((float)0.1d);
+				_ICC(i1, "#FFFFFF", "#FFFFFF");
+				b2.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
+						_FetchRequest();
+						_telegramLoaderDialog(true);
+						bottomSheetDialog.dismiss();
+					}
+				});
+				bottomSheetDialog.setCancelable(false);
+				b1.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
+						bottomSheetDialog.dismiss();
+						finish();
+					}
+				});
+				bottomSheetDialog.show();
+			}
+		};
 	}
 	
 	private void initializeLogic() {
@@ -581,8 +698,10 @@ public class ManageActivity extends AppCompatActivity {
 		YTUrl = "https://github.com/inotia00/VancedMicroG/releases/download/v0.2.27.230755/microg.apk";
 		_DownloadLogic();
 		_AppInfo();
+		_FetchRequest();
 		Resources res = getResources();
 		progressbar1.setProgressDrawable(res.getDrawable( R.drawable.gradient_progress));
+		_telegramLoaderDialog(true);
 	}
 	
 	@Override
@@ -2915,6 +3034,65 @@ public class ManageActivity extends AppCompatActivity {
 		else {
 			textview27.setText(MGVersionName);
 		}
+	}
+	
+	
+	public void _ICC(final ImageView _img, final String _c1, final String _c2) {
+		_img.setImageTintList(new android.content.res.ColorStateList(new int[][] {{-android.R.attr.state_pressed},{android.R.attr.state_pressed}},new int[]{Color.parseColor(_c1), Color.parseColor(_c2)}));
+	}
+	
+	
+	public void _RoundAndBorder(final View _view, final String _color1, final double _border, final String _color2, final double _round) {
+		android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable();
+		gd.setColor(Color.parseColor(_color1));
+		gd.setCornerRadius((int) _round);
+		gd.setStroke((int) _border, Color.parseColor(_color2));
+		_view.setBackground(gd);
+	}
+	
+	
+	public void _FetchRequest() {
+		Connection.startRequestNetwork(RequestNetworkController.GET, "https://www.google.com", "a", _Connection_request_listener);
+	}
+	
+	
+	public void _telegramLoaderDialog(final boolean _visibility) {
+		if (_visibility) {
+			if (coreprog == null){
+				coreprog = new ProgressDialog(this);
+				coreprog.setCancelable(false);
+				coreprog.setCanceledOnTouchOutside(false);
+				
+				coreprog.requestWindowFeature(Window.FEATURE_NO_TITLE);  coreprog.getWindow().setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(Color.TRANSPARENT));
+				
+			}
+			coreprog.show();
+			coreprog.setContentView(R.layout.loading);
+			
+			
+			LinearLayout linear2 = (LinearLayout)coreprog.findViewById(R.id.linear2);
+			
+			LinearLayout back = (LinearLayout)coreprog.findViewById(R.id.background);
+			
+			LinearLayout layout_progress = (LinearLayout)coreprog.findViewById(R.id.layout_progress);
+			
+			android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable(); 
+			gd.setColor(Color.parseColor("#BDBDBD")); /* color */
+			gd.setCornerRadius(40); /* radius */
+			gd.setStroke(0, Color.WHITE); /* stroke heigth and color */
+			linear2.setBackground(gd);
+			
+			RadialProgressView progress = new RadialProgressView(this);
+			layout_progress.addView(progress);
+		}
+		else {
+			if (coreprog != null){
+				coreprog.dismiss();
+			}
+		}
+	}
+	private ProgressDialog coreprog;
+	{
 	}
 	
 	

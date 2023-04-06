@@ -70,7 +70,7 @@ public class SettingsActivity extends AppCompatActivity {
 				in_tent.setClass(getApplicationContext(), ManageActivity.class);
 				startActivity(in_tent);
 				com.blogspot.atifsoftwares.animatoolib.Animatoo.animateZoom(SettingsActivity.this);
-				finish();
+				finishAffinity();
 			}
 		});
 	}
@@ -85,7 +85,7 @@ public class SettingsActivity extends AppCompatActivity {
 		in_tent.setClass(getApplicationContext(), ManageActivity.class);
 		startActivity(in_tent);
 		com.blogspot.atifsoftwares.animatoolib.Animatoo.animateZoom(SettingsActivity.this);
-		finish();
+		finishAffinity();
 	}
 	public void _LightTheme() {
 		_status_bar_color("#ffffff", "#EEEEEE");
