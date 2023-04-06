@@ -2,10 +2,6 @@ package app.rvx.manager.miracle;
 
 import android.animation.*;
 import android.app.*;
-import android.app.Activity;
-import android.app.DialogFragment;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.*;
 import android.content.Intent;
 import android.content.res.*;
@@ -24,6 +20,13 @@ import android.view.View.*;
 import android.view.animation.*;
 import android.webkit.*;
 import android.widget.*;
+import androidx.annotation.*;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import com.android.prime.arab.ware.everythingutils.*;
+import com.blogspot.atifsoftwares.animatoolib.*;
 import com.downloader.*;
 import java.io.*;
 import java.io.InputStream;
@@ -32,7 +35,7 @@ import java.util.*;
 import java.util.regex.*;
 import org.json.*;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 	
 	private Intent Redirect = new Intent();
 	

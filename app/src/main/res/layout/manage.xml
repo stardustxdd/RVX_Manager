@@ -248,7 +248,7 @@
 								android:id="@+id/textview11"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="latest"
 								android:textSize="12sp"
 								android:textStyle="bold"
 								android:textColor="#000000" />
@@ -256,7 +256,7 @@
 								android:id="@+id/textview12"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="installed"
 								android:textSize="12sp"
 								android:textStyle="bold"
 								android:textColor="#000000" />
@@ -264,7 +264,7 @@
 								android:id="@+id/textview13"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="updated on"
 								android:textSize="12sp"
 								android:textStyle="bold"
 								android:textColor="#000000" />
@@ -279,21 +279,21 @@
 								android:id="@+id/textview14"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="..."
 								android:textSize="12sp"
 								android:textColor="#000000" />
 							<TextView
 								android:id="@+id/textview15"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="..."
 								android:textSize="12sp"
 								android:textColor="#000000" />
 							<TextView
 								android:id="@+id/textview16"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="..."
 								android:textSize="12sp"
 								android:textColor="#000000" />
 						</LinearLayout>
@@ -482,7 +482,7 @@
 								android:id="@+id/textview17"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="latest"
 								android:textSize="12sp"
 								android:textStyle="bold"
 								android:textColor="#000000" />
@@ -490,7 +490,7 @@
 								android:id="@+id/textview19"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="installed"
 								android:textSize="12sp"
 								android:textStyle="bold"
 								android:textColor="#000000" />
@@ -498,7 +498,7 @@
 								android:id="@+id/textview18"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="updated on"
 								android:textSize="12sp"
 								android:textStyle="bold"
 								android:textColor="#000000" />
@@ -513,21 +513,21 @@
 								android:id="@+id/textview20"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="..."
 								android:textSize="12sp"
 								android:textColor="#000000" />
 							<TextView
 								android:id="@+id/textview21"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="..."
 								android:textSize="12sp"
 								android:textColor="#000000" />
 							<TextView
 								android:id="@+id/textview22"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="..."
 								android:textSize="12sp"
 								android:textColor="#000000" />
 						</LinearLayout>
@@ -716,7 +716,7 @@
 								android:id="@+id/textview23"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="latest"
 								android:textSize="12sp"
 								android:textStyle="bold"
 								android:textColor="#000000" />
@@ -724,7 +724,7 @@
 								android:id="@+id/textview24"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="installed"
 								android:textSize="12sp"
 								android:textStyle="bold"
 								android:textColor="#000000" />
@@ -732,7 +732,7 @@
 								android:id="@+id/textview25"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="updated on"
 								android:textSize="12sp"
 								android:textStyle="bold"
 								android:textColor="#000000" />
@@ -747,21 +747,21 @@
 								android:id="@+id/textview26"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="..."
 								android:textSize="12sp"
 								android:textColor="#000000" />
 							<TextView
 								android:id="@+id/textview27"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="..."
 								android:textSize="12sp"
 								android:textColor="#000000" />
 							<TextView
 								android:id="@+id/textview28"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
-								android:text="TextView"
+								android:text="..."
 								android:textSize="12sp"
 								android:textColor="#000000" />
 						</LinearLayout>

@@ -4,6 +4,11 @@
 	package="app.rvx.manager.miracle">
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+	<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+	<uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+	<uses-permission android:name="app.rvx.manager.miracle.permission.INSTALL_SHORTCUT" />
+	<uses-permission android:name="app.rvx.manager.miracle.permission.UNINSTALL_SHORTCUT" />
 	<application
 		android:allowBackup="true"
 		android:icon="@drawable/app_icon"
@@ -15,7 +20,6 @@
 			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
 			android:hardwareAccelerated="true"
 			android:supportsPictureInPicture="true"
-			android:theme="@style/NoActionBar"
 			android:screenOrientation="portrait">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -27,13 +31,28 @@
 			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
 			android:hardwareAccelerated="true"
 			android:supportsPictureInPicture="true"
-			android:theme="@style/NoActionBar"
+			android:screenOrientation="portrait" />
+		<activity
+			android:name=".SettingsActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
 			android:screenOrientation="portrait" />
 		<activity
 			android:name=".DebugActivity"
 			android:screenOrientation="portrait" />
 		<uses-library
 			android:name="org.apache.http.legacy"
-			android:required="false" />
+			android:required="false" />
+<provider
+			android:name="androidx.core.content.FileProvider"
+			android:authorities="app.rvx.manager.miracle.provider"
+			android:exported="false"
+			android:grantUriPermissions="true">
+			<meta-data
+				android:name="android.support.FILE_PROVIDER_PATHS"
+				android:resource="@xml/provider" />
+		</provider>
+        
 	</application>
 </manifest>

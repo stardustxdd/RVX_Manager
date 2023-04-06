@@ -3,10 +3,8 @@ package app.rvx.manager.miracle;
 import android.animation.*;
 import android.app.*;
 import android.app.Activity;
-import android.app.DialogFragment;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.*;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.*;
 import android.graphics.*;
@@ -14,7 +12,9 @@ import android.graphics.Typeface;
 import android.graphics.drawable.*;
 import android.media.*;
 import android.net.*;
+import android.net.Uri;
 import android.os.*;
+import android.os.Bundle;
 import android.text.*;
 import android.text.style.*;
 import android.util.*;
@@ -31,16 +31,25 @@ import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.Switch;
 import android.widget.TextView;
+import androidx.annotation.*;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import com.android.prime.arab.ware.everythingutils.*;
+import com.blogspot.atifsoftwares.animatoolib.*;
 import com.downloader.*;
 import java.io.*;
+import java.io.InputStream;
 import java.text.*;
 import java.util.*;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.regex.*;
 import org.json.*;
+import android.content.pm.PackageManager;
 
-public class ManageActivity extends Activity {
+public class ManageActivity extends AppCompatActivity {
 	
 	private Timer _timer = new Timer();
 	
@@ -55,6 +64,15 @@ public class ManageActivity extends Activity {
 	private boolean downloading = false;
 	private double progressPercent = 0;
 	private boolean pause = false;
+	private String RVXYtPkg = "";
+	private String packageName = "";
+	private String YTVersionName = "";
+	private String YTSHA256 = "";
+	private String RVXYmPkg = "";
+	private String RVXMgPkg = "";
+	private String YMVersionName = "";
+	private String YMSHA256 = "";
+	private String MGVersionName = "";
 	
 	private LinearLayout linear1;
 	private ScrollView vscroll1;
@@ -189,6 +207,7 @@ public class ManageActivity extends Activity {
 	private RequestNetwork net;
 	private RequestNetwork.RequestListener _net_request_listener;
 	private TimerTask timer;
+	private Intent intent = new Intent();
 	
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
@@ -381,6 +400,35 @@ public class ManageActivity extends Activity {
 			}
 		});
 		
+		linear52.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				packageName = RVXYtPkg;
+				try {
+					    Intent miracle = new Intent(intent.ACTION_DELETE);
+					    miracle.setData(Uri.parse("package:" + packageName));
+					    startActivity(miracle);
+					
+				} catch ( ActivityNotFoundException e ) {
+					SketchwareUtil.showMessage(getApplicationContext(), "Application Not Found !");
+				}
+			}
+		});
+		
+		linear48.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				try {
+					    Intent miracle = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+					    miracle.setData(Uri.parse("package:"+RVXYtPkg));
+					    startActivity(miracle);
+					
+				} catch ( ActivityNotFoundException e ) {
+					SketchwareUtil.showMessage(getApplicationContext(), "Application Not Found On Your Device !");
+				}
+			}
+		});
+		
 		linear29.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View _view) {
@@ -412,6 +460,34 @@ public class ManageActivity extends Activity {
 			}
 		});
 		
+		linear54.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				try {
+					    Intent miracle = new Intent(intent.ACTION_DELETE);
+					    miracle.setData(Uri.parse("package:"+RVXYmPkg));
+					    startActivity(miracle);
+					
+				} catch ( ActivityNotFoundException e ) {
+					SketchwareUtil.showMessage(getApplicationContext(), "Application Not Found !");
+				}
+			}
+		});
+		
+		linear58.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				try {
+					    Intent miracle = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+					    miracle.setData(Uri.parse("package:"+RVXYmPkg));
+					    startActivity(miracle);
+					
+				} catch ( ActivityNotFoundException e ) {
+					SketchwareUtil.showMessage(getApplicationContext(), "Application Not Found On Your Device !");
+				}
+			}
+		});
+		
 		linear39.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View _view) {
@@ -432,6 +508,34 @@ public class ManageActivity extends Activity {
 					if (Settings.getString("themes", "").equals("black")) {
 						_ColorFilter(imageview6, "#ffffff");
 					}
+				}
+			}
+		});
+		
+		linear62.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				try {
+					    Intent miracle = new Intent(intent.ACTION_DELETE);
+					    miracle.setData(Uri.parse("package:"+RVXMgPkg));
+					    startActivity(miracle);
+					
+				} catch ( ActivityNotFoundException e ) {
+					SketchwareUtil.showMessage(getApplicationContext(), "Application Not Found !");
+				}
+			}
+		});
+		
+		linear66.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				try {
+					    Intent miracle = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+					    miracle.setData(Uri.parse("package:"+RVXMgPkg));
+					    startActivity(miracle);
+					
+				} catch ( ActivityNotFoundException e ) {
+					SketchwareUtil.showMessage(getApplicationContext(), "Application Not Found On Your Device !");
 				}
 			}
 		});
@@ -464,7 +568,9 @@ public class ManageActivity extends Activity {
 	private void initializeLogic() {
 		downloading = false;
 		pause = false;
-		//PRDownloader.initialize(getApplicationContext());
+		RVXYtPkg = "app.rvx.android.youtube";
+		RVXYmPkg = "app.rvx.android.apps.youtube.music";
+		RVXMgPkg = "com.mgoogle.android.gms";
 		Settings.edit().putString("themes", "light").commit();
 		_LightTheme();
 		_DefaultVisibleity();
@@ -474,6 +580,7 @@ public class ManageActivity extends Activity {
 		MG_Visb = 0;
 		YTUrl = "https://github.com/inotia00/VancedMicroG/releases/download/v0.2.27.230755/microg.apk";
 		_DownloadLogic();
+		_AppInfo();
 		Resources res = getResources();
 		progressbar1.setProgressDrawable(res.getDrawable( R.drawable.gradient_progress));
 	}
@@ -519,6 +626,7 @@ public class ManageActivity extends Activity {
 		dialog1.setCancelable(true);
 		dialog1.show();
 	}
+	
 	public void _status_bar_color(final String _colour1, final String _colour2) {
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) { 
 			   Window w = this.getWindow(); w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS); w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -639,7 +747,6 @@ public class ManageActivity extends Activity {
 		linear20.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
 		linear43.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
 		linear71.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
-		textview1.setTextColor(0xFF8C9EFF);
 		textview6.setTextColor(0xFFE0E0E0);
 		textview2.setTextColor(0xFFFFFFFF);
 		textview8.setTextColor(0xFFE0E0E0);
@@ -647,18 +754,6 @@ public class ManageActivity extends Activity {
 		textview5.setTextColor(0xFFFFFFFF);
 		textview7.setTextColor(0xFFFFFFFF);
 		textview9.setTextColor(0xFFFFFFFF);
-		textview14.setTextColor(0xFF9FA8DA);
-		textview15.setTextColor(0xFF9FA8DA);
-		textview16.setTextColor(0xFF9FA8DA);
-		textview20.setTextColor(0xFF9FA8DA);
-		textview21.setTextColor(0xFF9FA8DA);
-		textview22.setTextColor(0xFF9FA8DA);
-		textview20.setTextColor(0xFF9FA8DA);
-		textview21.setTextColor(0xFF9FA8DA);
-		textview22.setTextColor(0xFF9FA8DA);
-		textview26.setTextColor(0xFF9FA8DA);
-		textview27.setTextColor(0xFF9FA8DA);
-		textview28.setTextColor(0xFF9FA8DA);
 		textview11.setTextColor(0xFFFFFFFF);
 		textview12.setTextColor(0xFFFFFFFF);
 		textview13.setTextColor(0xFFFFFFFF);
@@ -734,6 +829,10 @@ public class ManageActivity extends Activity {
 			} });
 		
 		lin_settings.setOnClickListener(new OnClickListener() { public void onClick(View view) {
+				Intent in_tent = new Intent();
+				in_tent.setClass(getApplicationContext(), SettingsActivity.class);
+				startActivity(in_tent);
+				com.blogspot.atifsoftwares.animatoolib.Animatoo.animateFade(ManageActivity.this);
 				popup.dismiss();
 			} });
 		
@@ -861,6 +960,7 @@ public class ManageActivity extends Activity {
 		linear53.setVisibility(View.GONE);
 		linear35.setVisibility(View.GONE);
 		linear61.setVisibility(View.GONE);
+		linear71.setVisibility(View.GONE);
 	}
 	
 	
@@ -920,8 +1020,9 @@ public class ManageActivity extends Activity {
 	public void _DownloadLogic() {
 		linear29.setOnClickListener(new View.OnClickListener() {
 				public void onClick(View v) {
+				linear71.setVisibility(View.VISIBLE);
 				if (downloading) {
-					SketchwareUtil.showMessage(getApplicationContext(), "A File Is Already Downloading Please Wait ");
+					SketchwareUtil.showMessage(getApplicationContext(), "Please wait until file download not complete !");
 				}
 				else {
 					PRDownloaderConfig config = PRDownloaderConfig.newBuilder()
@@ -957,6 +1058,7 @@ public class ManageActivity extends Activity {
 						                            @Override
 						                            public void onCancel() {
 							downloading = false;
+							linear71.setVisibility(View.GONE);
 							
 						}
 						                        })
@@ -974,7 +1076,29 @@ public class ManageActivity extends Activity {
 					                        .start(new OnDownloadListener() {
 						                            @Override
 						                            public void onDownloadComplete() {
+							try {
+								if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+														Uri uri = androidx.core.content.FileProvider.getUriForFile(getApplicationContext(),
+																ManageActivity.this.getPackageName() + ".provider", new java.io.File(FileUtil.getPackageDataDir(getApplicationContext()).concat("/saved/YT_Miracle.apk")));
+														Intent intent = new Intent(Intent.ACTION_VIEW);
+														intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+														intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+														intent.setDataAndType(uri, "application/vnd.android.package-archive");
+														startActivity(intent);
+									
+												} else {
+														Intent intent = new Intent(Intent.ACTION_VIEW);
+														intent.setDataAndType(Uri.fromFile( new java.io.File(FileUtil.getPackageDataDir(getApplicationContext()).concat("/saved/YT_Miracle.apk"))),
+																"application/vnd.android.package-archive");
+														intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+														startActivity(intent);
+												}
+								
+							} catch (Exception rr) {
+								showMessage (rr.toString());
+							}
 							downloading = false;
+							linear71.setVisibility(View.GONE);
 							SketchwareUtil.showMessage(getApplicationContext(), "Complete");
 							
 						}
@@ -2741,8 +2865,56 @@ public class ManageActivity extends Activity {
 	}
 	
 	
-	public void _Test() {
-		
+	public void _AppInfo() {
+		ApkUtils apk = new ApkUtils(ManageActivity.this);
+		try{
+			apk.setPackageName(RVXYtPkg);
+		}catch(Exception e){
+			 
+		}
+		YTVersionName = apk.getVersionName();
+		YTSHA256 =  apk.getSHA256();
+		if (YTVersionName.equals("null")) {
+			textview15.setText("Application not installed.");
+		}
+		else {
+			if (YTSHA256.toLowerCase().equals("301a91e1fb5ec0d3462d6f6134b9f2d9b6dfed4d998c24ee04529c3dd7553c67")) {
+				textview15.setText(YTVersionName);
+			}
+			else {
+				textview15.setText("Signature Mismatch, Please uninstall\n ReVanced Extended APK.");
+			}
+		}
+		try{
+			apk.setPackageName(RVXYmPkg);
+		}catch(Exception e){
+			 
+		}
+		YMVersionName = apk.getVersionName();
+		YMSHA256 =  apk.getSHA256();
+		if (YMVersionName.equals("null")) {
+			textview21.setText("Application not installed.");
+		}
+		else {
+			if (YMSHA256.toLowerCase().equals("301a91e1fb5ec0d3462d6f6134b9f2d9b6dfed4d998c24ee04529c3dd7553c67")) {
+				textview21.setText(YMVersionName);
+			}
+			else {
+				textview21.setText("Signature Mismatch, Please uninstall\n ReVanced Extended Music APK.");
+			}
+		}
+		try{
+			apk.setPackageName(RVXMgPkg);
+		}catch(Exception e){
+			 
+		}
+		MGVersionName = apk.getVersionName();
+		if (MGVersionName.equals("null")) {
+			textview27.setText("Application not installed.");
+		}
+		else {
+			textview27.setText(MGVersionName);
+		}
 	}
 	
 	
