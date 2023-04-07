@@ -24,7 +24,6 @@ import android.view.View.*;
 import android.view.animation.*;
 import android.webkit.*;
 import android.widget.*;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -89,7 +88,6 @@ public class ManageActivity extends AppCompatActivity {
 	private LinearLayout linear43;
 	private LinearLayout linear70;
 	private LinearLayout linear71;
-	private Button button1;
 	private Switch switch1;
 	private LinearLayout linear44;
 	private LinearLayout linear45;
@@ -236,7 +234,6 @@ public class ManageActivity extends AppCompatActivity {
 		linear43 = findViewById(R.id.linear43);
 		linear70 = findViewById(R.id.linear70);
 		linear71 = findViewById(R.id.linear71);
-		button1 = findViewById(R.id.button1);
 		switch1 = findViewById(R.id.switch1);
 		linear44 = findViewById(R.id.linear44);
 		linear45 = findViewById(R.id.linear45);
@@ -355,64 +352,27 @@ public class ManageActivity extends AppCompatActivity {
 		net = new RequestNetwork(this);
 		Connection = new RequestNetwork(this);
 		
-		button1.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View _view) {
-				final com.google.android.material.bottomsheet.BottomSheetDialog bottomSheetDialog = new com.google.android.material.bottomsheet.BottomSheetDialog(ManageActivity.this);
-				
-				View bottomSheetView; bottomSheetView = getLayoutInflater().inflate(R.layout.no_internet,null );
-				bottomSheetDialog.setContentView(bottomSheetView);
-				
-				bottomSheetDialog.getWindow().findViewById(R.id.design_bottom_sheet).setBackgroundResource(android.R.color.transparent);
-				TextView t1 = (TextView) bottomSheetView.findViewById(R.id.t1);
-				
-				TextView t2 = (TextView) bottomSheetView.findViewById(R.id.t2);
-				
-				TextView b1 = (TextView) bottomSheetView.findViewById(R.id.b1);
-				
-				TextView b2 = (TextView) bottomSheetView.findViewById(R.id.b2);
-				
-				ImageView i1 = (ImageView) bottomSheetView.findViewById(R.id.i1);
-				
-				LinearLayout bg = (LinearLayout) bottomSheetView.findViewById(R.id.bg);
-				t1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
-				t2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), 0);
-				b1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
-				b2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
-				i1.setImageResource(R.drawable.thumb_1);
-				t1.setText("Disconnected From Internet !");
-				t2.setText("Sorry you can't connect to this project at this moment. please try again later.");
-				b1.setText("Cancel");
-				b2.setText("Try again");
-				_RoundAndBorder(i1, "#D50000", 0, "#D50000", 100);
-				_rippleRoundStroke(bg, "#FFFFFF", "#000000", 15, 0, "#000000");
-				_rippleRoundStroke(b1, "#FFFFFF", "#EEEEEE", 15, 2.5d, "#EEEEEE");
-				_rippleRoundStroke(b2, "#D50000", "#40FFFFFF", 15, 0, "#000000");
-				i1.setElevation((float)0.1d);
-				_ICC(i1, "#FFFFFF", "#FFFFFF");
-				b1.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
-						bottomSheetDialog.dismiss();
-						SketchwareUtil.showMessage(getApplicationContext(), "button1 Press");
-					}
-				});
-				b2.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
-						SketchwareUtil.showMessage(getApplicationContext(), "button2 Press");
-					}
-				});
-				bottomSheetDialog.setCancelable(true);
-				bottomSheetDialog.show();
-			}
-		});
-		
 		switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton _param1, boolean _param2) {
 				final boolean _isChecked = _param2;
 				if (_isChecked) {
 					_DarkTheme();
+					if (Settings.getString("themes", "").equals("light")) {
+						_ColorFilterLight();
+					}
+					else {
+						_ColorFilterDark();
+					}
 				}
 				else {
 					_LightTheme();
+					if (Settings.getString("themes", "").equals("light")) {
+						_ColorFilterLight();
+					}
+					else {
+						_ColorFilterDark();
+					}
 				}
 			}
 		});
@@ -439,8 +399,12 @@ public class ManageActivity extends AppCompatActivity {
 					linear11.setVisibility(View.VISIBLE);
 					linear13.setVisibility(View.VISIBLE);
 					imageview3.setImageResource(R.drawable.ic_arrow_drop_up_black);
+					_ColorFilter(imageview3, "#000000");
 					if (Settings.getString("themes", "").equals("black")) {
 						_ColorFilter(imageview3, "#ffffff");
+					}
+					else {
+						_ColorFilter(imageview3, "#000000");
 					}
 				}
 				else {
@@ -450,6 +414,9 @@ public class ManageActivity extends AppCompatActivity {
 					imageview3.setImageResource(R.drawable.ic_arrow_drop_down_black);
 					if (Settings.getString("themes", "").equals("black")) {
 						_ColorFilter(imageview3, "#ffffff");
+					}
+					else {
+						_ColorFilter(imageview3, "#000000");
 					}
 				}
 			}
@@ -502,6 +469,9 @@ public class ManageActivity extends AppCompatActivity {
 					if (Settings.getString("themes", "").equals("black")) {
 						_ColorFilter(imageview4, "#ffffff");
 					}
+					else {
+						_ColorFilter(imageview4, "#000000");
+					}
 				}
 				else {
 					YM_Visb = 0;
@@ -510,6 +480,9 @@ public class ManageActivity extends AppCompatActivity {
 					imageview4.setImageResource(R.drawable.ic_arrow_drop_down_black);
 					if (Settings.getString("themes", "").equals("black")) {
 						_ColorFilter(imageview4, "#ffffff");
+					}
+					else {
+						_ColorFilter(imageview4, "#000000");
 					}
 				}
 			}
@@ -554,6 +527,9 @@ public class ManageActivity extends AppCompatActivity {
 					if (Settings.getString("themes", "").equals("black")) {
 						_ColorFilter(imageview6, "#ffffff");
 					}
+					else {
+						_ColorFilter(imageview6, "#000000");
+					}
 				}
 				else {
 					MG_Visb = 0;
@@ -562,6 +538,9 @@ public class ManageActivity extends AppCompatActivity {
 					imageview6.setImageResource(R.drawable.ic_arrow_drop_down_black);
 					if (Settings.getString("themes", "").equals("black")) {
 						_ColorFilter(imageview6, "#ffffff");
+					}
+					else {
+						_ColorFilter(imageview6, "#000000");
 					}
 				}
 			}
@@ -625,71 +604,79 @@ public class ManageActivity extends AppCompatActivity {
 				final String _tag = _param1;
 				final String _response = _param2;
 				final HashMap<String, Object> _responseHeaders = _param3;
-				_telegramLoaderDialog(false);
+				/*
+_telegramLoaderDialog(false);
+*/
 			}
 			
 			@Override
 			public void onErrorResponse(String _param1, String _param2) {
 				final String _tag = _param1;
 				final String _message = _param2;
-				_telegramLoaderDialog(false);
-				final com.google.android.material.bottomsheet.BottomSheetDialog bottomSheetDialog = new com.google.android.material.bottomsheet.BottomSheetDialog(ManageActivity.this);
-				
-				View bottomSheetView; bottomSheetView = getLayoutInflater().inflate(R.layout.no_internet,null );
-				bottomSheetDialog.setContentView(bottomSheetView);
-				
-				bottomSheetDialog.getWindow().findViewById(R.id.design_bottom_sheet).setBackgroundResource(android.R.color.transparent);
-				TextView t1 = (TextView) bottomSheetView.findViewById(R.id.t1);
-				
-				TextView t2 = (TextView) bottomSheetView.findViewById(R.id.t2);
-				
-				TextView b1 = (TextView) bottomSheetView.findViewById(R.id.b1);
-				
-				TextView b2 = (TextView) bottomSheetView.findViewById(R.id.b2);
-				
-				ImageView i1 = (ImageView) bottomSheetView.findViewById(R.id.i1);
-				
-				LinearLayout bg = (LinearLayout) bottomSheetView.findViewById(R.id.bg);
-				t1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
-				t2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), 0);
-				b1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
-				b2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
-				i1.setImageResource(R.drawable.thumb_1);
-				t1.setText("Disconnected From Internet !");
-				t2.setText("Sorry you can't connect to this project at this moment. please try again later.");
-				b1.setText("Cancel");
-				b2.setText("Try again");
-				_RoundAndBorder(i1, "#D50000", 0, "#D50000", 100);
-				_rippleRoundStroke(bg, "#FFFFFF", "#000000", 15, 0, "#000000");
-				_rippleRoundStroke(b1, "#FFFFFF", "#EEEEEE", 15, 2.5d, "#EEEEEE");
-				_rippleRoundStroke(b2, "#D50000", "#40FFFFFF", 15, 0, "#000000");
-				i1.setElevation((float)0.1d);
-				_ICC(i1, "#FFFFFF", "#FFFFFF");
-				b2.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
-						_FetchRequest();
-						_telegramLoaderDialog(true);
-						bottomSheetDialog.dismiss();
-					}
-				});
-				bottomSheetDialog.setCancelable(false);
-				b1.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
-						bottomSheetDialog.dismiss();
-						finish();
-					}
-				});
-				bottomSheetDialog.show();
+				/*
+_telegramLoaderDialog(false);
+final com.google.android.material.bottomsheet.BottomSheetDialog bottomSheetDialog = new com.google.android.material.bottomsheet.BottomSheetDialog(ManageActivity.this);
+
+View bottomSheetView; bottomSheetView = getLayoutInflater().inflate(R.layout.no_internet,null );
+bottomSheetDialog.setContentView(bottomSheetView);
+
+bottomSheetDialog.getWindow().findViewById(R.id.design_bottom_sheet).setBackgroundResource(android.R.color.transparent);
+TextView t1 = (TextView) bottomSheetView.findViewById(R.id.t1);
+
+TextView t2 = (TextView) bottomSheetView.findViewById(R.id.t2);
+
+TextView b1 = (TextView) bottomSheetView.findViewById(R.id.b1);
+
+TextView b2 = (TextView) bottomSheetView.findViewById(R.id.b2);
+
+ImageView i1 = (ImageView) bottomSheetView.findViewById(R.id.i1);
+
+LinearLayout bg = (LinearLayout) bottomSheetView.findViewById(R.id.bg);
+t1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+t2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), 0);
+b1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+b2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+i1.setImageResource(R.drawable.thumb_1);
+t1.setText("Disconnected From Internet !");
+t2.setText("Sorry you can't connect to this project at this moment. please try again later.");
+b1.setText("Cancel");
+b2.setText("Try again");
+_RoundAndBorder(i1, "#D50000", 0, "#D50000", 100);
+_rippleRoundStroke(bg, "#FFFFFF", "#000000", 15, 0, "#000000");
+_rippleRoundStroke(b1, "#FFFFFF", "#EEEEEE", 15, 2.5d, "#EEEEEE");
+_rippleRoundStroke(b2, "#D50000", "#40FFFFFF", 15, 0, "#000000");
+i1.setElevation((float)0.1d);
+_ICC(i1, "#FFFFFF", "#FFFFFF");
+b2.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
+_FetchRequest();
+_telegramLoaderDialog(true);
+bottomSheetDialog.dismiss();
+}
+});
+bottomSheetDialog.setCancelable(false);
+b1.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
+bottomSheetDialog.dismiss();
+finish();
+}
+});
+bottomSheetDialog.show();
+*/
 			}
 		};
 	}
 	
 	private void initializeLogic() {
+		Settings.edit().putString("themes", "light").commit();
+		_LightTheme();
+		/*
+_FetchRequest();
+_telegramLoaderDialog(true);
+*/
 		downloading = false;
 		pause = false;
 		RVXYtPkg = "app.rvx.android.youtube";
 		RVXYmPkg = "app.rvx.android.apps.youtube.music";
 		RVXMgPkg = "com.mgoogle.android.gms";
-		Settings.edit().putString("themes", "light").commit();
-		_LightTheme();
 		_DefaultVisibleity();
 		_changeActivityFont("en_medium");
 		YT_Visb = 1;
@@ -698,10 +685,21 @@ public class ManageActivity extends AppCompatActivity {
 		YTUrl = "https://github.com/inotia00/VancedMicroG/releases/download/v0.2.27.230755/microg.apk";
 		_DownloadLogic();
 		_AppInfo();
-		_FetchRequest();
 		Resources res = getResources();
 		progressbar1.setProgressDrawable(res.getDrawable( R.drawable.gradient_progress));
-		_telegramLoaderDialog(true);
+		if (Settings.getString("UserName", "").equals("")) {
+			Settings.edit().putString("UserName", "Unknown User").commit();
+			textview3.setText(Settings.getString("UserName", ""));
+		}
+		else {
+			textview3.setText(Settings.getString("UserName", ""));
+		}
+		if (Settings.getString("themes", "").equals("light")) {
+			_ColorFilterLight();
+		}
+		else {
+			_ColorFilterDark();
+		}
 	}
 	
 	@Override
@@ -764,21 +762,6 @@ public class ManageActivity extends AppCompatActivity {
 			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFFEEEEEE);
 		}
 		Settings.edit().putString("themes", "light").commit();
-		_ColorFilter(imageview8, "#304ffe");
-		_ColorFilter(imageview9, "#304ffe");
-		_ColorFilter(imageview10, "#304ffe");
-		_ColorFilter(imageview11, "#304ffe");
-		_ColorFilter(imageview12, "#304ffe");
-		_ColorFilter(imageview13, "#304ffe");
-		_ColorFilter(imageview14, "#304ffe");
-		_ColorFilter(imageview15, "#304ffe");
-		_ColorFilter(imageview16, "#304ffe");
-		_ColorFilter(imageview17, "#304ffe");
-		_ColorFilter(imageview18, "#304ffe");
-		_ColorFilter(imageview19, "#304ffe");
-		imageview3.setColorFilter(0xFF000000, PorterDuff.Mode.MULTIPLY);
-		imageview4.setColorFilter(0xFF000000, PorterDuff.Mode.MULTIPLY);
-		imageview6.setColorFilter(0xFF000000, PorterDuff.Mode.MULTIPLY);
 		textview2.setTextColor(0xFF000000);
 		textview6.setTextColor(0xFF424242);
 		textview8.setTextColor(0xFF424242);
@@ -794,6 +777,8 @@ public class ManageActivity extends AppCompatActivity {
 		linear20.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
 		linear43.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
 		linear71.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
+		textview1.setTextColor(0xFF304FFE);
+		textview3.setTextColor(0xFF304FFE);
 		textview14.setTextColor(0xFF2962FF);
 		textview15.setTextColor(0xFF2962FF);
 		textview16.setTextColor(0xFF2962FF);
@@ -818,10 +803,6 @@ public class ManageActivity extends AppCompatActivity {
 		textview29.setTextColor(0xFF000000);
 		textview30.setTextColor(0xFF000000);
 		textview31.setTextColor(0xFF000000);
-		_ColorFilter(imageview3, "#000000");
-		_ColorFilter(imageview4, "#000000");
-		_ColorFilter(imageview6, "#000000");
-		_ColorFilter(imageview7, "#000000");
 		_GradientDrawable(linear30, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
 		_GradientDrawable(linear31, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
 		_GradientDrawable(linear39, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
@@ -859,9 +840,6 @@ public class ManageActivity extends AppCompatActivity {
 		vscroll1.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)00, 0xFF000000));
 		linear3.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
 		linear5.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
-		imageview3.setColorFilter(0xFFFFFFFF, PorterDuff.Mode.MULTIPLY);
-		imageview4.setColorFilter(0xFFFFFFFF, PorterDuff.Mode.MULTIPLY);
-		imageview6.setColorFilter(0xFFFFFFFF, PorterDuff.Mode.MULTIPLY);
 		linear10.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
 		linear20.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
 		linear43.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
@@ -873,6 +851,20 @@ public class ManageActivity extends AppCompatActivity {
 		textview5.setTextColor(0xFFFFFFFF);
 		textview7.setTextColor(0xFFFFFFFF);
 		textview9.setTextColor(0xFFFFFFFF);
+		textview1.setTextColor(0xFF8C9EFF);
+		textview3.setTextColor(0xFF8C9EFF);
+		textview14.setTextColor(0xFF8C9EFF);
+		textview15.setTextColor(0xFF8C9EFF);
+		textview16.setTextColor(0xFF8C9EFF);
+		textview20.setTextColor(0xFF8C9EFF);
+		textview21.setTextColor(0xFF8C9EFF);
+		textview22.setTextColor(0xFF8C9EFF);
+		textview20.setTextColor(0xFF8C9EFF);
+		textview21.setTextColor(0xFF8C9EFF);
+		textview22.setTextColor(0xFF8C9EFF);
+		textview26.setTextColor(0xFF8C9EFF);
+		textview27.setTextColor(0xFF8C9EFF);
+		textview28.setTextColor(0xFF8C9EFF);
 		textview11.setTextColor(0xFFFFFFFF);
 		textview12.setTextColor(0xFFFFFFFF);
 		textview13.setTextColor(0xFFFFFFFF);
@@ -889,10 +881,6 @@ public class ManageActivity extends AppCompatActivity {
 		_GradientDrawable(linear31, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
 		_GradientDrawable(linear39, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
 		_GradientDrawable(linear46, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
-		_ColorFilter(imageview3, "#ffffff");
-		_ColorFilter(imageview4, "#ffffff");
-		_ColorFilter(imageview6, "#ffffff");
-		_ColorFilter(imageview7, "#ffffff");
 		_GradientDrawable(linear48, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
 		_GradientDrawable(linear50, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
 		_GradientDrawable(linear52, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
@@ -944,6 +932,10 @@ public class ManageActivity extends AppCompatActivity {
 			} });
 		
 		lin_sketchub.setOnClickListener(new OnClickListener() { public void onClick(View view) {
+				Intent in_tent = new Intent();
+				in_tent.setClass(getApplicationContext(), AboutActivity.class);
+				startActivity(in_tent);
+				com.blogspot.atifsoftwares.animatoolib.Animatoo.animateFade(ManageActivity.this);
 				popup.dismiss();
 			} });
 		
@@ -3093,6 +3085,46 @@ public class ManageActivity extends AppCompatActivity {
 	}
 	private ProgressDialog coreprog;
 	{
+	}
+	
+	
+	public void _ColorFilterLight() {
+		_ColorFilter(imageview3, "#000000");
+		_ColorFilter(imageview4, "#000000");
+		_ColorFilter(imageview6, "#000000");
+		_ColorFilter(imageview7, "#000000");
+		_ColorFilter(imageview8, "#304ffe");
+		_ColorFilter(imageview9, "#304ffe");
+		_ColorFilter(imageview10, "#304ffe");
+		_ColorFilter(imageview11, "#304ffe");
+		_ColorFilter(imageview12, "#304ffe");
+		_ColorFilter(imageview13, "#304ffe");
+		_ColorFilter(imageview14, "#304ffe");
+		_ColorFilter(imageview15, "#304ffe");
+		_ColorFilter(imageview16, "#304ffe");
+		_ColorFilter(imageview17, "#304ffe");
+		_ColorFilter(imageview18, "#304ffe");
+		_ColorFilter(imageview19, "#304ffe");
+	}
+	
+	
+	public void _ColorFilterDark() {
+		_ColorFilter(imageview3, "#ffffff");
+		_ColorFilter(imageview4, "#ffffff");
+		_ColorFilter(imageview6, "#ffffff");
+		_ColorFilter(imageview7, "#ffffff");
+		_ColorFilter(imageview8, "#8c9eff");
+		_ColorFilter(imageview9, "#8c9eff");
+		_ColorFilter(imageview10, "#8c9eff");
+		_ColorFilter(imageview11, "#8c9eff");
+		_ColorFilter(imageview12, "#8c9eff");
+		_ColorFilter(imageview13, "#8c9eff");
+		_ColorFilter(imageview14, "#8c9eff");
+		_ColorFilter(imageview15, "#8c9eff");
+		_ColorFilter(imageview16, "#8c9eff");
+		_ColorFilter(imageview17, "#304ffe");
+		_ColorFilter(imageview18, "#8c9eff");
+		_ColorFilter(imageview19, "#8c9eff");
 	}
 	
 	
