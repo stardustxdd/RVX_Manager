@@ -43,6 +43,12 @@
 			android:supportsPictureInPicture="true"
 			android:screenOrientation="portrait" />
 		<activity
+			android:name=".UpdateActivity"
+			android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+			android:hardwareAccelerated="true"
+			android:supportsPictureInPicture="true"
+			android:screenOrientation="portrait" />
+		<activity
 			android:name=".DebugActivity"
 			android:screenOrientation="portrait" />
 		<uses-library

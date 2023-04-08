@@ -12,8 +12,6 @@ import android.media.*;
 import android.net.*;
 import android.os.*;
 import android.text.*;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.text.style.*;
 import android.util.*;
 import android.view.*;
@@ -22,17 +20,15 @@ import android.view.View.*;
 import android.view.animation.*;
 import android.webkit.*;
 import android.widget.*;
-import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 import androidx.annotation.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import com.airbnb.lottie.*;
 import com.android.prime.arab.ware.everythingutils.*;
 import com.blogspot.atifsoftwares.animatoolib.*;
 import com.downloader.*;
@@ -42,7 +38,7 @@ import java.util.*;
 import java.util.regex.*;
 import org.json.*;
 
-public class SettingsActivity extends AppCompatActivity {
+public class UpdateActivity extends AppCompatActivity {
 	
 	private String fontName = "";
 	private String typeace = "";
@@ -51,22 +47,20 @@ public class SettingsActivity extends AppCompatActivity {
 	private LinearLayout linear2;
 	private LinearLayout linear4;
 	private LinearLayout linear5;
-	private Switch switch1;
 	private LinearLayout linear3;
 	private TextView textview1;
 	private ImageView imageview1;
-	private TextView textview2;
-	private LinearLayout linear13;
+	private LottieAnimationView lottie1;
 	private LinearLayout linear6;
-	private LinearLayout linear8;
+	private TextView textview2;
 	private TextView textview3;
-	private LinearLayout linear7;
-	private TextView textview4;
-	private LinearLayout linear9;
-	private LinearLayout linear10;
-	private LinearLayout linear11;
-	private EditText edittext1;
 	private LinearLayout linear12;
+	private LinearLayout linear8;
+	private LinearLayout linear10;
+	private LinearLayout linear9;
+	private LinearLayout linear11;
+	private TextView textview4;
+	private TextView textview5;
 	private TextView textview6;
 	
 	private SharedPreferences Settings;
@@ -74,7 +68,7 @@ public class SettingsActivity extends AppCompatActivity {
 	@Override
 	protected void onCreate(Bundle _savedInstanceState) {
 		super.onCreate(_savedInstanceState);
-		setContentView(R.layout.settings);
+		setContentView(R.layout.update);
 		initialize(_savedInstanceState);
 		initializeLogic();
 	}
@@ -84,86 +78,27 @@ public class SettingsActivity extends AppCompatActivity {
 		linear2 = findViewById(R.id.linear2);
 		linear4 = findViewById(R.id.linear4);
 		linear5 = findViewById(R.id.linear5);
-		switch1 = findViewById(R.id.switch1);
 		linear3 = findViewById(R.id.linear3);
 		textview1 = findViewById(R.id.textview1);
 		imageview1 = findViewById(R.id.imageview1);
-		textview2 = findViewById(R.id.textview2);
-		linear13 = findViewById(R.id.linear13);
+		lottie1 = findViewById(R.id.lottie1);
 		linear6 = findViewById(R.id.linear6);
-		linear8 = findViewById(R.id.linear8);
+		textview2 = findViewById(R.id.textview2);
 		textview3 = findViewById(R.id.textview3);
-		linear7 = findViewById(R.id.linear7);
-		textview4 = findViewById(R.id.textview4);
-		linear9 = findViewById(R.id.linear9);
-		linear10 = findViewById(R.id.linear10);
-		linear11 = findViewById(R.id.linear11);
-		edittext1 = findViewById(R.id.edittext1);
 		linear12 = findViewById(R.id.linear12);
+		linear8 = findViewById(R.id.linear8);
+		linear10 = findViewById(R.id.linear10);
+		linear9 = findViewById(R.id.linear9);
+		linear11 = findViewById(R.id.linear11);
+		textview4 = findViewById(R.id.textview4);
+		textview5 = findViewById(R.id.textview5);
 		textview6 = findViewById(R.id.textview6);
 		Settings = getSharedPreferences("getSettings", Activity.MODE_PRIVATE);
-		
-		switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton _param1, boolean _param2) {
-				final boolean _isChecked = _param2;
-				if (_isChecked) {
-					_DarkTheme();
-				}
-				else {
-					_LightTheme();
-				}
-			}
-		});
 		
 		linear3.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View _view) {
-				Intent in_tent = new Intent();
-				in_tent.setClass(getApplicationContext(), ManageActivity.class);
-				startActivity(in_tent);
-				com.blogspot.atifsoftwares.animatoolib.Animatoo.animateZoom(SettingsActivity.this);
-				finishAffinity();
-			}
-		});
-		
-		linear7.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View _view) {
-				linear8.setVisibility(View.VISIBLE);
-				edittext1.setText(Settings.getString("UserName", ""));
-			}
-		});
-		
-		edittext1.addTextChangedListener(new TextWatcher() {
-			@Override
-			public void onTextChanged(CharSequence _param1, int _param2, int _param3, int _param4) {
-				final String _charSeq = _param1.toString();
-				textview4.setText(edittext1.getText().toString());
-			}
-			
-			@Override
-			public void beforeTextChanged(CharSequence _param1, int _param2, int _param3, int _param4) {
-				
-			}
-			
-			@Override
-			public void afterTextChanged(Editable _param1) {
-				
-			}
-		});
-		
-		linear12.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View _view) {
-				if (edittext1.getText().toString().equals("")) {
-					SketchwareUtil.showMessage(getApplicationContext(), "Please enter a valid Username!");
-				}
-				else {
-					Settings.edit().putString("UserName", edittext1.getText().toString().trim()).commit();
-					textview4.setText(Settings.getString("UserName", ""));
-					linear8.setVisibility(View.GONE);
-				}
+				_Back();
 			}
 		});
 	}
@@ -171,42 +106,31 @@ public class SettingsActivity extends AppCompatActivity {
 	private void initializeLogic() {
 		_LightTheme();
 		_changeActivityFont("en_medium");
-		textview4.setText(Settings.getString("UserName", ""));
-		linear8.setVisibility(View.GONE);
+		lottie1.setAnimation("Animation/update-app.json");
+		_GradientDrawable(linear8, 50, 00, 00, "#304EFF", "#FFFFFF", true, true, 200);
+		_GradientDrawable(linear10, 50, 00, 00, "#304EFF", "#FFFFFF", true, true, 200);
+		_GradientDrawable(linear11, 50, 00, 00, "#304EFF", "#FFFFFF", true, true, 200);
+		linear10.setVisibility(View.GONE);
 	}
 	
 	@Override
 	public void onBackPressed() {
-		Intent in_tent = new Intent();
-		in_tent.setClass(getApplicationContext(), ManageActivity.class);
-		startActivity(in_tent);
-		com.blogspot.atifsoftwares.animatoolib.Animatoo.animateZoom(SettingsActivity.this);
-		finishAffinity();
+		_Back();
 	}
 	public void _LightTheme() {
 		_status_bar_color("#ffffff", "#EEEEEE");
 		getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
 		getWindow().setStatusBarColor(0xFFFFFFFF);
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-			Window w =SettingsActivity.this.getWindow();
+			Window w =UpdateActivity.this.getWindow();
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFFEEEEEE);
 		}
 		Settings.edit().putString("themes", "light").commit();
 		linear1.setBackgroundColor(0xFFEEEEEE);
-		_GradientDrawable(linear3, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 200);
-		_GradientDrawable(edittext1, 25, 00, 00, "#eeeeee", "#ffffff", false, true, 200);
-		_GradientDrawable(linear12, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 200);
 		linear2.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
 		linear5.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
-		textview1.setTextColor(0xFF304FFE);
-		textview2.setTextColor(0xFF000000);
-		textview3.setTextColor(0xFF000000);
-		textview4.setTextColor(0xFF000000);
-		textview6.setTextColor(0xFF000000);
-		edittext1.setTextColor(0xFF000000);
-		edittext1.setHintTextColor(0xFF424242);
-		_ColorFilter(imageview1, "#000000");
+		_GradientDrawable(linear3, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 2000);
 	}
 	
 	
@@ -214,24 +138,13 @@ public class SettingsActivity extends AppCompatActivity {
 		_status_bar_color("#ffffff", "#000000");
 		getWindow().getDecorView().setSystemUiVisibility(0);
 		if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
-			Window w =SettingsActivity.this.getWindow();
+			Window w =UpdateActivity.this.getWindow();
 			w.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 			w.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS); w.setStatusBarColor(0xFF000000);
 		}
 		linear1.setBackgroundColor(0xFF000000);
-		_GradientDrawable(linear3, 25, 00, 00, "#000000", "#ffffff", true, true, 200);
-		_GradientDrawable(edittext1, 25, 00, 00, "#000000", "#ffffff", false, true, 200);
-		_GradientDrawable(linear12, 25, 00, 00, "#000000", "#ffffff", true, true, 200);
-		linear2.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
-		linear5.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
-		textview1.setTextColor(0xFF3F51B5);
-		textview2.setTextColor(0xFFFFFFFF);
-		textview3.setTextColor(0xFFFFFFFF);
-		textview4.setTextColor(0xFFFFFFFF);
-		textview6.setTextColor(0xFFFFFFFF);
-		edittext1.setTextColor(0xFFFFFFFF);
-		edittext1.setHintTextColor(0xFF304FFE);
-		_ColorFilter(imageview1, "#ffffff");
+		linear2.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
+		linear5.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
 	}
 	
 	
@@ -243,7 +156,7 @@ public class SettingsActivity extends AppCompatActivity {
 			gd.setStroke((int)_stroke,Color.parseColor(_borderColor));
 			if (Build.VERSION.SDK_INT >= 21){
 				_view.setElevation((int)_shadow);}
-			android.content.res.ColorStateList clrb = new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{Color.parseColor("#304FFE")});
+			android.content.res.ColorStateList clrb = new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{Color.parseColor("#A1D1FF")});
 			android.graphics.drawable.RippleDrawable ripdrb = new android.graphics.drawable.RippleDrawable(clrb , gd, null);
 			_view.setClickable(true);
 			_view.setBackground(ripdrb);
@@ -314,6 +227,15 @@ public class SettingsActivity extends AppCompatActivity {
 	
 	public void _ColorFilter(final ImageView _view, final String _color) {
 		_view.getDrawable().setColorFilter(Color.parseColor(_color), PorterDuff.Mode.SRC_IN);
+	}
+	
+	
+	public void _Back() {
+		Intent in_tent = new Intent();
+		in_tent.setClass(getApplicationContext(), ManageActivity.class);
+		startActivity(in_tent);
+		com.blogspot.atifsoftwares.animatoolib.Animatoo.animateZoom(UpdateActivity.this);
+		finishAffinity();
 	}
 	
 	

@@ -358,21 +358,9 @@ public class ManageActivity extends AppCompatActivity {
 				final boolean _isChecked = _param2;
 				if (_isChecked) {
 					_DarkTheme();
-					if (Settings.getString("themes", "").equals("light")) {
-						_ColorFilterLight();
-					}
-					else {
-						_ColorFilterDark();
-					}
 				}
 				else {
 					_LightTheme();
-					if (Settings.getString("themes", "").equals("light")) {
-						_ColorFilterLight();
-					}
-					else {
-						_ColorFilterDark();
-					}
 				}
 			}
 		});
@@ -398,25 +386,22 @@ public class ManageActivity extends AppCompatActivity {
 					YT_Visb = 1;
 					linear11.setVisibility(View.VISIBLE);
 					linear13.setVisibility(View.VISIBLE);
-					imageview3.setImageResource(R.drawable.ic_arrow_drop_up_black);
-					_ColorFilter(imageview3, "#000000");
-					if (Settings.getString("themes", "").equals("black")) {
-						_ColorFilter(imageview3, "#ffffff");
+					if (Settings.getString("themes", "").equals("light")) {
+						imageview3.setImageResource(R.drawable.ic_angle_small_up_black);
 					}
 					else {
-						_ColorFilter(imageview3, "#000000");
+						imageview3.setImageResource(R.drawable.ic_angle_small_up);
 					}
 				}
 				else {
 					YT_Visb = 0;
 					linear11.setVisibility(View.GONE);
 					linear13.setVisibility(View.GONE);
-					imageview3.setImageResource(R.drawable.ic_arrow_drop_down_black);
-					if (Settings.getString("themes", "").equals("black")) {
-						_ColorFilter(imageview3, "#ffffff");
+					if (Settings.getString("themes", "").equals("light")) {
+						imageview3.setImageResource(R.drawable.ic_angle_small_down_black);
 					}
 					else {
-						_ColorFilter(imageview3, "#000000");
+						imageview3.setImageResource(R.drawable.ic_angle_small_down);
 					}
 				}
 			}
@@ -465,24 +450,22 @@ public class ManageActivity extends AppCompatActivity {
 					YM_Visb = 1;
 					linear22.setVisibility(View.VISIBLE);
 					linear53.setVisibility(View.VISIBLE);
-					imageview4.setImageResource(R.drawable.ic_arrow_drop_up_black);
-					if (Settings.getString("themes", "").equals("black")) {
-						_ColorFilter(imageview4, "#ffffff");
+					if (Settings.getString("themes", "").equals("light")) {
+						imageview4.setImageResource(R.drawable.ic_angle_small_up_black);
 					}
 					else {
-						_ColorFilter(imageview4, "#000000");
+						imageview4.setImageResource(R.drawable.ic_angle_small_up);
 					}
 				}
 				else {
 					YM_Visb = 0;
 					linear22.setVisibility(View.GONE);
 					linear53.setVisibility(View.GONE);
-					imageview4.setImageResource(R.drawable.ic_arrow_drop_down_black);
-					if (Settings.getString("themes", "").equals("black")) {
-						_ColorFilter(imageview4, "#ffffff");
+					if (Settings.getString("themes", "").equals("light")) {
+						imageview4.setImageResource(R.drawable.ic_angle_small_down_black);
 					}
 					else {
-						_ColorFilter(imageview4, "#000000");
+						imageview4.setImageResource(R.drawable.ic_angle_small_down);
 					}
 				}
 			}
@@ -523,24 +506,22 @@ public class ManageActivity extends AppCompatActivity {
 					MG_Visb = 1;
 					linear35.setVisibility(View.VISIBLE);
 					linear61.setVisibility(View.VISIBLE);
-					imageview6.setImageResource(R.drawable.ic_arrow_drop_up_black);
-					if (Settings.getString("themes", "").equals("black")) {
-						_ColorFilter(imageview6, "#ffffff");
+					if (Settings.getString("themes", "").equals("light")) {
+						imageview6.setImageResource(R.drawable.ic_angle_small_up_black);
 					}
 					else {
-						_ColorFilter(imageview6, "#000000");
+						imageview6.setImageResource(R.drawable.ic_angle_small_up);
 					}
 				}
 				else {
 					MG_Visb = 0;
 					linear35.setVisibility(View.GONE);
 					linear61.setVisibility(View.GONE);
-					imageview6.setImageResource(R.drawable.ic_arrow_drop_down_black);
-					if (Settings.getString("themes", "").equals("black")) {
-						_ColorFilter(imageview6, "#ffffff");
+					if (Settings.getString("themes", "").equals("light")) {
+						imageview6.setImageResource(R.drawable.ic_angle_small_down_black);
 					}
 					else {
-						_ColorFilter(imageview6, "#000000");
+						imageview6.setImageResource(R.drawable.ic_angle_small_down);
 					}
 				}
 			}
@@ -687,6 +668,18 @@ _telegramLoaderDialog(true);
 		_AppInfo();
 		Resources res = getResources();
 		progressbar1.setProgressDrawable(res.getDrawable( R.drawable.gradient_progress));
+		Calendar c = Calendar.getInstance();
+		int timeOfDay = c.get(Calendar.HOUR_OF_DAY);
+		
+		if(timeOfDay >= 0 && timeOfDay < 12){
+			    textview2.setText("Good Morning,");
+		}else if(timeOfDay >= 12 && timeOfDay < 16){
+			    textview2.setText("Good Afternoon,");
+		}else if(timeOfDay >= 16 && timeOfDay < 21){
+			    textview2.setText("Good Evening,");
+		}else if(timeOfDay >= 21 && timeOfDay < 24){
+			    textview2.setText( "Good Night,");
+		}
 		if (Settings.getString("UserName", "").equals("")) {
 			Settings.edit().putString("UserName", "Unknown User").commit();
 			textview3.setText(Settings.getString("UserName", ""));
@@ -694,12 +687,7 @@ _telegramLoaderDialog(true);
 		else {
 			textview3.setText(Settings.getString("UserName", ""));
 		}
-		if (Settings.getString("themes", "").equals("light")) {
-			_ColorFilterLight();
-		}
-		else {
-			_ColorFilterDark();
-		}
+		_ColorFilterLight();
 	}
 	
 	@Override
@@ -825,6 +813,8 @@ _telegramLoaderDialog(true);
 		_GradientDrawable(linear68, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
 		_GradientDrawable(linear76, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
 		_GradientDrawable(linear82, 25, 00, 00, "#eeeeee", "#ffffff", false, true, 1000);
+		_ColorFilterLight();
+		_IconColorUpDown();
 	}
 	
 	
@@ -899,6 +889,8 @@ _telegramLoaderDialog(true);
 		_GradientDrawable(linear68, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
 		_GradientDrawable(linear76, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
 		_GradientDrawable(linear82, 25, 00, 00, "#000000", "#ffffff", false, true, 1000);
+		_ColorFilter(imageview7, "#ffffff");
+		_IconColorUpDown();
 	}
 	
 	
@@ -928,6 +920,10 @@ _telegramLoaderDialog(true);
 		
 		ImageView img3 = popupView.findViewById(R.id.imageview3);
 		lin_text.setOnClickListener(new OnClickListener() { public void onClick(View view) {
+				Intent in_tent = new Intent();
+				in_tent.setClass(getApplicationContext(), UpdateActivity.class);
+				startActivity(in_tent);
+				com.blogspot.atifsoftwares.animatoolib.Animatoo.animateFade(ManageActivity.this);
 				popup.dismiss();
 			} });
 		
@@ -1134,6 +1130,50 @@ _telegramLoaderDialog(true);
 				linear71.setVisibility(View.VISIBLE);
 				if (downloading) {
 					SketchwareUtil.showMessage(getApplicationContext(), "Please wait until file download not complete !");
+					final AlertDialog dialognc = new AlertDialog.Builder(ManageActivity.this).create();
+					View inflate = getLayoutInflater().inflate(R.layout.dnc,null); 
+					dialognc.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+					dialognc.setView(inflate);
+					TextView t1 = (TextView) inflate.findViewById(R.id.t1);
+					
+					TextView t2 = (TextView) inflate.findViewById(R.id.t2);
+					
+					TextView b1 = (TextView) inflate.findViewById(R.id.b1);
+					
+					TextView b2 = (TextView) inflate.findViewById(R.id.b2);
+					
+					LinearLayout bg = (LinearLayout) inflate.findViewById(R.id.bg);
+					t1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+					t2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), 0);
+					/*
+b1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+*/
+					b2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+					
+					t1.setText("Please Wait");
+					t2.setText("A another file is already downloading please wait until download complete !");
+					b2.setText("Okay");
+					_rippleRoundStroke(bg, "#FFFFFF", "#000000", 15, 0, "#000000");
+					if (Settings.getString("themes", "").equals("black")) {
+						t1.setTextColor(0xFFFFFFFF);
+						_rippleRoundStroke(bg, "#454545", "#000000", 15, 0, "#000000");
+					}
+					/*
+_rippleRoundStroke(b1, "#F5F5F5", "#E0E0E0", 15, 0, "#000000");
+*/
+					_rippleRoundStroke(b2, "#304ffe", "#40FFFFFF", 15, 0, "#000000");
+					/*
+b1.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
+dialog1.dismiss();
+}
+});
+*/
+					b2.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
+							dialognc.dismiss();
+						}
+					});
+					dialognc.setCancelable(true);
+					dialognc.show();
 				}
 				else {
 					PRDownloaderConfig config = PRDownloaderConfig.newBuilder()
@@ -2978,6 +3018,8 @@ _telegramLoaderDialog(true);
 	
 	public void _AppInfo() {
 		ApkUtils apk = new ApkUtils(ManageActivity.this);
+		ApkUtils qapk = new ApkUtils(ManageActivity.this);
+		ApkUtils rapk = new ApkUtils(ManageActivity.this);
 		try{
 			apk.setPackageName(RVXYtPkg);
 		}catch(Exception e){
@@ -2986,7 +3028,7 @@ _telegramLoaderDialog(true);
 		YTVersionName = apk.getVersionName();
 		YTSHA256 =  apk.getSHA256();
 		if (YTVersionName.equals("null")) {
-			textview15.setText("Application not installed.");
+			textview15.setText("Application not installed !");
 		}
 		else {
 			if (YTSHA256.toLowerCase().equals("301a91e1fb5ec0d3462d6f6134b9f2d9b6dfed4d998c24ee04529c3dd7553c67")) {
@@ -2997,14 +3039,14 @@ _telegramLoaderDialog(true);
 			}
 		}
 		try{
-			apk.setPackageName(RVXYmPkg);
+			qapk.setPackageName(RVXYmPkg);
 		}catch(Exception e){
 			 
 		}
-		YMVersionName = apk.getVersionName();
-		YMSHA256 =  apk.getSHA256();
+		YMVersionName = qapk.getVersionName();
+		YMSHA256 =  qapk.getSHA256();
 		if (YMVersionName.equals("null")) {
-			textview21.setText("Application not installed.");
+			textview21.setText("Application not installed !");
 		}
 		else {
 			if (YMSHA256.toLowerCase().equals("301a91e1fb5ec0d3462d6f6134b9f2d9b6dfed4d998c24ee04529c3dd7553c67")) {
@@ -3015,13 +3057,13 @@ _telegramLoaderDialog(true);
 			}
 		}
 		try{
-			apk.setPackageName(RVXMgPkg);
+			rapk.setPackageName(RVXMgPkg);
 		}catch(Exception e){
 			 
 		}
-		MGVersionName = apk.getVersionName();
+		MGVersionName = rapk.getVersionName();
 		if (MGVersionName.equals("null")) {
-			textview27.setText("Application not installed.");
+			textview27.setText("Application not installed !");
 		}
 		else {
 			textview27.setText(MGVersionName);
@@ -3089,42 +3131,63 @@ _telegramLoaderDialog(true);
 	
 	
 	public void _ColorFilterLight() {
-		_ColorFilter(imageview3, "#000000");
-		_ColorFilter(imageview4, "#000000");
-		_ColorFilter(imageview6, "#000000");
 		_ColorFilter(imageview7, "#000000");
-		_ColorFilter(imageview8, "#304ffe");
-		_ColorFilter(imageview9, "#304ffe");
-		_ColorFilter(imageview10, "#304ffe");
-		_ColorFilter(imageview11, "#304ffe");
-		_ColorFilter(imageview12, "#304ffe");
-		_ColorFilter(imageview13, "#304ffe");
-		_ColorFilter(imageview14, "#304ffe");
-		_ColorFilter(imageview15, "#304ffe");
-		_ColorFilter(imageview16, "#304ffe");
-		_ColorFilter(imageview17, "#304ffe");
-		_ColorFilter(imageview18, "#304ffe");
-		_ColorFilter(imageview19, "#304ffe");
+		_ColorFilter(imageview8, "#304FFE");
+		_ColorFilter(imageview9, "#304FFE");
+		_ColorFilter(imageview10, "#304FFE");
+		_ColorFilter(imageview11, "#304FFE");
+		_ColorFilter(imageview12, "#304FFE");
+		_ColorFilter(imageview13, "#304FFE");
+		_ColorFilter(imageview14, "#304FFE");
+		_ColorFilter(imageview15, "#304FFE");
+		_ColorFilter(imageview16, "#304FFE");
+		_ColorFilter(imageview17, "#304FFE");
+		_ColorFilter(imageview18, "#304FFE");
+		_ColorFilter(imageview19, "#304FFE");
 	}
 	
 	
-	public void _ColorFilterDark() {
-		_ColorFilter(imageview3, "#ffffff");
-		_ColorFilter(imageview4, "#ffffff");
-		_ColorFilter(imageview6, "#ffffff");
-		_ColorFilter(imageview7, "#ffffff");
-		_ColorFilter(imageview8, "#8c9eff");
-		_ColorFilter(imageview9, "#8c9eff");
-		_ColorFilter(imageview10, "#8c9eff");
-		_ColorFilter(imageview11, "#8c9eff");
-		_ColorFilter(imageview12, "#8c9eff");
-		_ColorFilter(imageview13, "#8c9eff");
-		_ColorFilter(imageview14, "#8c9eff");
-		_ColorFilter(imageview15, "#8c9eff");
-		_ColorFilter(imageview16, "#8c9eff");
-		_ColorFilter(imageview17, "#304ffe");
-		_ColorFilter(imageview18, "#8c9eff");
-		_ColorFilter(imageview19, "#8c9eff");
+	public void _IconColorUpDown() {
+		if (Settings.getString("themes", "").equals("light")) {
+			if (YT_Visb == 0) {
+				imageview3.setImageResource(R.drawable.ic_angle_small_up_black);
+			}
+			else {
+				imageview3.setImageResource(R.drawable.ic_angle_small_down_black);
+			}
+			if (YM_Visb == 0) {
+				imageview4.setImageResource(R.drawable.ic_angle_small_down_black);
+			}
+			else {
+				imageview4.setImageResource(R.drawable.ic_angle_small_up_black);
+			}
+			if (MG_Visb == 0) {
+				imageview6.setImageResource(R.drawable.ic_angle_small_down_black);
+			}
+			else {
+				imageview6.setImageResource(R.drawable.ic_angle_small_up_black);
+			}
+		}
+		else {
+			if (YT_Visb == 0) {
+				imageview3.setImageResource(R.drawable.ic_angle_small_down);
+			}
+			else {
+				imageview3.setImageResource(R.drawable.ic_angle_small_up);
+			}
+			if (YM_Visb == 0) {
+				imageview4.setImageResource(R.drawable.ic_angle_small_down);
+			}
+			else {
+				imageview4.setImageResource(R.drawable.ic_angle_small_up);
+			}
+			if (MG_Visb == 0) {
+				imageview6.setImageResource(R.drawable.ic_angle_small_down);
+			}
+			else {
+				imageview6.setImageResource(R.drawable.ic_angle_small_up);
+			}
+		}
 	}
 	
 	

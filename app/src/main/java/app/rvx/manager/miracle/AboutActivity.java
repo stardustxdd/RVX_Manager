@@ -41,6 +41,9 @@ import org.json.*;
 
 public class AboutActivity extends AppCompatActivity {
 	
+	private String fontName = "";
+	private String typeace = "";
+	
 	private ScrollView vscroll1;
 	private LinearLayout linear1;
 	private LinearLayout linear2;
@@ -50,6 +53,8 @@ public class AboutActivity extends AppCompatActivity {
 	private LinearLayout linear5;
 	private LinearLayout linear8;
 	private LinearLayout linear10;
+	private LinearLayout linear13;
+	private LinearLayout linear14;
 	private LinearLayout linear3;
 	private TextView textview1;
 	private ImageView imageview1;
@@ -60,7 +65,6 @@ public class AboutActivity extends AppCompatActivity {
 	private TextView textview4;
 	private TextView textview5;
 	private TextView textview6;
-	private LinearLayout linear11;
 	private TextView textview8;
 	private TextView textview9;
 	private TextView textview10;
@@ -90,6 +94,8 @@ public class AboutActivity extends AppCompatActivity {
 		linear5 = findViewById(R.id.linear5);
 		linear8 = findViewById(R.id.linear8);
 		linear10 = findViewById(R.id.linear10);
+		linear13 = findViewById(R.id.linear13);
+		linear14 = findViewById(R.id.linear14);
 		linear3 = findViewById(R.id.linear3);
 		textview1 = findViewById(R.id.textview1);
 		imageview1 = findViewById(R.id.imageview1);
@@ -100,7 +106,6 @@ public class AboutActivity extends AppCompatActivity {
 		textview4 = findViewById(R.id.textview4);
 		textview5 = findViewById(R.id.textview5);
 		textview6 = findViewById(R.id.textview6);
-		linear11 = findViewById(R.id.linear11);
 		textview8 = findViewById(R.id.textview8);
 		textview9 = findViewById(R.id.textview9);
 		textview10 = findViewById(R.id.textview10);
@@ -128,6 +133,7 @@ public class AboutActivity extends AppCompatActivity {
 	
 	private void initializeLogic() {
 		_LightTheme();
+		_changeActivityFont("en_medium");
 		int[] colorsCNJKL = { Color.parseColor("#304EFF"), Color.parseColor("#FF0000") }; android.graphics.drawable.GradientDrawable CNJKL = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.TL_BR, colorsCNJKL);
 		CNJKL.setCornerRadii(new float[]{(int)26,(int)26,(int)26,(int)26,(int)26,(int)26,(int)26,(int)26});
 		CNJKL.setStroke((int) 0, Color.parseColor("#000000"));
@@ -158,6 +164,7 @@ public class AboutActivity extends AppCompatActivity {
 		linear5.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
 		linear6.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
 		linear9.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
+		linear14.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
 	}
 	
 	
@@ -263,6 +270,48 @@ public class AboutActivity extends AppCompatActivity {
 		startActivity(in_tent);
 		com.blogspot.atifsoftwares.animatoolib.Animatoo.animateZoom(AboutActivity.this);
 		finishAffinity();
+	}
+	
+	
+	public void _changeActivityFont(final String _fontname) {
+		fontName = "fonts/".concat(_fontname.concat(".ttf"));
+		overrideFonts(this,getWindow().getDecorView()); 
+	} 
+	private void overrideFonts(final android.content.Context context, final View v) {
+		
+		try {
+			Typeface 
+			typeace = Typeface.createFromAsset(getAssets(), fontName);;
+			if ((v instanceof ViewGroup)) {
+				ViewGroup vg = (ViewGroup) v;
+				for (int i = 0;
+				i < vg.getChildCount();
+				i++) {
+					View child = vg.getChildAt(i);
+					overrideFonts(context, child);
+				}
+			}
+			else {
+				if ((v instanceof TextView)) {
+					((TextView) v).setTypeface(typeace);
+				}
+				else {
+					if ((v instanceof EditText )) {
+						((EditText) v).setTypeface(typeace);
+					}
+					else {
+						if ((v instanceof Button)) {
+							((Button) v).setTypeface(typeace);
+						}
+					}
+				}
+			}
+		}
+		catch(Exception e)
+		
+		{
+			SketchwareUtil.showMessage(getApplicationContext(), "Error Loading Font");
+		};
 	}
 	
 	

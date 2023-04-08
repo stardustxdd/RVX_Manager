@@ -65,10 +65,10 @@
 							android:orientation="horizontal">
 							<ImageView
 								android:id="@+id/imageview7"
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content"
-								android:src="@drawable/ic_more_vert_black"
-								android:scaleType="center" />
+								android:layout_width="25dp"
+								android:layout_height="25dp"
+								android:src="@drawable/ic_application"
+								android:scaleType="fitCenter" />
 						</LinearLayout>
 					</LinearLayout>
 				</LinearLayout>
@@ -225,10 +225,10 @@
 								android:orientation="horizontal">
 								<ImageView
 									android:id="@+id/imageview3"
-									android:layout_width="wrap_content"
-									android:layout_height="wrap_content"
-									android:src="@drawable/ic_arrow_drop_up_black"
-									android:scaleType="center" />
+									android:layout_width="20dp"
+									android:layout_height="20dp"
+									android:src="@drawable/ic_angle_small_up_black"
+									android:scaleType="fitCenter" />
 							</LinearLayout>
 						</LinearLayout>
 					</LinearLayout>
@@ -459,10 +459,10 @@
 								android:orientation="horizontal">
 								<ImageView
 									android:id="@+id/imageview4"
-									android:layout_width="wrap_content"
-									android:layout_height="wrap_content"
-									android:src="@drawable/ic_arrow_drop_down_black"
-									android:scaleType="center" />
+									android:layout_width="20dp"
+									android:layout_height="20dp"
+									android:src="@drawable/ic_angle_small_down_black"
+									android:scaleType="fitCenter" />
 							</LinearLayout>
 						</LinearLayout>
 					</LinearLayout>
@@ -693,10 +693,10 @@
 								android:orientation="horizontal">
 								<ImageView
 									android:id="@+id/imageview6"
-									android:layout_width="wrap_content"
-									android:layout_height="wrap_content"
-									android:src="@drawable/ic_arrow_drop_down_black"
-									android:scaleType="center" />
+									android:layout_width="20dp"
+									android:layout_height="20dp"
+									android:src="@drawable/ic_angle_small_down_black"
+									android:scaleType="fitCenter" />
 							</LinearLayout>
 						</LinearLayout>
 					</LinearLayout>
@@ -916,7 +916,7 @@
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
 								android:padding="4dp"
-								android:text="00 %"
+								android:text="0 %"
 								android:textSize="12sp"
 								android:textStyle="bold"
 								android:textColor="#000000" />
