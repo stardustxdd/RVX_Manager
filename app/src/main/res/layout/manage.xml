@@ -67,7 +67,7 @@
 								android:id="@+id/imageview7"
 								android:layout_width="25dp"
 								android:layout_height="25dp"
-								android:src="@drawable/ic_application"
+								android:src="@drawable/ic_more"
 								android:scaleType="fitCenter" />
 						</LinearLayout>
 					</LinearLayout>
@@ -871,9 +871,23 @@
 							android:id="@+id/textview31"
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
-							android:padding="8dp"
+							android:paddingLeft="8dp"
+							android:paddingTop="8dp"
+							android:paddingRight="2dp"
+							android:paddingBottom="8dp"
 							android:text="Downloading "
 							android:textSize="12sp"
+							android:textColor="#000000" />
+						<TextView
+							android:id="@+id/textview32"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:paddingTop="8dp"
+							android:paddingRight="8dp"
+							android:paddingBottom="8dp"
+							android:text="..."
+							android:textSize="12sp"
+							android:textStyle="bold"
 							android:textColor="#000000" />
 					</LinearLayout>
 					<LinearLayout
@@ -946,6 +960,14 @@
 						</LinearLayout>
 					</LinearLayout>
 				</LinearLayout>
+				<Button
+					android:id="@+id/button1"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:padding="8dp"
+					android:text="Button"
+					android:textSize="12sp"
+					android:textColor="#000000" />
 				<Switch
 					android:id="@+id/switch1"
 					android:layout_width="wrap_content"

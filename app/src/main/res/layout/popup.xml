@@ -22,10 +22,10 @@
 			<ImageView
 				android:id="@+id/imageview1"
 				android:focusable="false"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:src="@drawable/ic_cached_black"
-				android:scaleType="center" />
+				android:layout_width="15dp"
+				android:layout_height="15dp"
+				android:src="@drawable/ic_refresh"
+				android:scaleType="fitCenter" />
 			<TextView
 				android:id="@+id/txt1"
 				android:focusable="false"
@@ -90,10 +90,10 @@
 			<ImageView
 				android:id="@+id/imageview3"
 				android:focusable="false"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:src="@drawable/ic_settings_black"
-				android:scaleType="center" />
+				android:layout_width="15dp"
+				android:layout_height="15dp"
+				android:src="@drawable/ic_setting"
+				android:scaleType="fitCenter" />
 			<TextView
 				android:id="@+id/txt3"
 				android:focusable="false"
