@@ -7,6 +7,7 @@ import android.content.*;
 import android.content.SharedPreferences;
 import android.content.res.*;
 import android.graphics.*;
+import android.graphics.Typeface;
 import android.graphics.drawable.*;
 import android.media.*;
 import android.net.*;
@@ -119,7 +120,50 @@ public class AboutActivity extends AppCompatActivity {
 		linear5.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View _view) {
+				final AlertDialog dialogncm = new AlertDialog.Builder(AboutActivity.this).create();
+				View inflate = getLayoutInflater().inflate(R.layout.dnc,null); 
+				dialogncm.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+				dialogncm.setView(inflate);
+				TextView t1 = (TextView) inflate.findViewById(R.id.t1);
 				
+				TextView t2 = (TextView) inflate.findViewById(R.id.t2);
+				
+				TextView b1 = (TextView) inflate.findViewById(R.id.b1);
+				
+				TextView b2 = (TextView) inflate.findViewById(R.id.b2);
+				
+				LinearLayout bg = (LinearLayout) inflate.findViewById(R.id.bg);
+				t1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+				t2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), 0);
+				/*
+b1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+*/
+				b2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+				
+				t1.setText("What's New In Latest Version ?");
+				t2.setText(Settings.getString("RVX_MANAGER_WHATS_NEW", ""));
+				b2.setText("Okay");
+				_rippleRoundStroke(bg, "#FFFFFF", "#000000", 15, 0, "#000000");
+				if (Settings.getString("themes", "").equals("black")) {
+					t1.setTextColor(0xFFFFFFFF);
+					_rippleRoundStroke(bg, "#454545", "#000000", 15, 0, "#000000");
+				}
+				/*
+_rippleRoundStroke(b1, "#F5F5F5", "#E0E0E0", 15, 0, "#000000");
+*/
+				_rippleRoundStroke(b2, "#304ffe", "#40FFFFFF", 15, 0, "#000000");
+				/*
+b1.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
+dialog1.dismiss();
+}
+});
+*/
+				b2.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
+						dialogncm.dismiss();
+					}
+				});
+				dialogncm.setCancelable(true);
+				dialogncm.show();
 			}
 		});
 		
@@ -132,14 +176,29 @@ public class AboutActivity extends AppCompatActivity {
 	}
 	
 	private void initializeLogic() {
-		_LightTheme();
+		if (Settings.getString("themes", "").equals("light")) {
+			_LightTheme();
+		}
+		else {
+			_DarkTheme();
+		}
 		_changeActivityFont("en_medium");
 		int[] colorsCNJKL = { Color.parseColor("#304EFF"), Color.parseColor("#FF0000") }; android.graphics.drawable.GradientDrawable CNJKL = new android.graphics.drawable.GradientDrawable(android.graphics.drawable.GradientDrawable.Orientation.TL_BR, colorsCNJKL);
 		CNJKL.setCornerRadii(new float[]{(int)26,(int)26,(int)26,(int)26,(int)26,(int)26,(int)26,(int)26});
 		CNJKL.setStroke((int) 0, Color.parseColor("#000000"));
 		linear5.setElevation((float) 0);
 		linear5.setBackground(CNJKL);
-		lottie1.setAnimation("maintainence-plan.json");
+		lottie1.setAnimation("Animation/VDJzJgKAe8.json");
+		if (Settings.getString("RVXMV", "").equals("")) {
+			textview2.setText("RVX Manager");
+			linear5.setElevation((float) 0);
+			linear5.setBackground(CNJKL);
+		}
+		else {
+			textview2.setText("RVX Manager ".concat(Settings.getString("RVXMV", "")));
+			linear5.setElevation((float) 0);
+			linear5.setBackground(CNJKL);
+		}
 	}
 	
 	@Override
@@ -161,10 +220,20 @@ public class AboutActivity extends AppCompatActivity {
 		_GradientDrawable(linear3, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 200);
 		_ColorFilter(imageview1, "#000000");
 		linear2.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
-		linear5.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
 		linear6.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
 		linear9.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
 		linear14.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
+		textview5.setTextColor(0xFF000000);
+		textview6.setTextColor(0xFF000000);
+		textview7.setTextColor(0xFF000000);
+		textview9.setTextColor(0xFF000000);
+		textview10.setTextColor(0xFF000000);
+		textview11.setTextColor(0xFF000000);
+		textview12.setTextColor(0xFF000000);
+		textview13.setTextColor(0xFF000000);
+		textview1.setTextColor(0xFF304FFE);
+		textview4.setTextColor(0xFF304FFE);
+		textview8.setTextColor(0xFF304FFE);
 	}
 	
 	
@@ -178,7 +247,23 @@ public class AboutActivity extends AppCompatActivity {
 		}
 		linear1.setBackgroundColor(0xFF000000);
 		vscroll1.setBackgroundColor(0xFF000000);
+		_GradientDrawable(linear3, 25, 00, 00, "#000000", "#ffffff", true, true, 200);
+		linear2.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
+		linear6.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
+		linear9.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
+		linear14.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
 		_ColorFilter(imageview1, "#ffffff");
+		textview5.setTextColor(0xFFFFFFFF);
+		textview6.setTextColor(0xFFFFFFFF);
+		textview7.setTextColor(0xFFFFFFFF);
+		textview9.setTextColor(0xFFFFFFFF);
+		textview10.setTextColor(0xFFFFFFFF);
+		textview11.setTextColor(0xFFFFFFFF);
+		textview12.setTextColor(0xFFFFFFFF);
+		textview13.setTextColor(0xFFFFFFFF);
+		textview1.setTextColor(0xFF8C9EFF);
+		textview4.setTextColor(0xFF8C9EFF);
+		textview8.setTextColor(0xFF8C9EFF);
 	}
 	
 	
@@ -312,6 +397,17 @@ public class AboutActivity extends AppCompatActivity {
 		{
 			SketchwareUtil.showMessage(getApplicationContext(), "Error Loading Font");
 		};
+	}
+	
+	
+	public void _rippleRoundStroke(final View _view, final String _focus, final String _pressed, final double _round, final double _stroke, final String _strokeclr) {
+		android.graphics.drawable.GradientDrawable GG = new android.graphics.drawable.GradientDrawable();
+		GG.setColor(Color.parseColor(_focus));
+		GG.setCornerRadius((float)_round);
+		GG.setStroke((int) _stroke,
+		Color.parseColor("#" + _strokeclr.replace("#", "")));
+		android.graphics.drawable.RippleDrawable RE = new android.graphics.drawable.RippleDrawable(new android.content.res.ColorStateList(new int[][]{new int[]{}}, new int[]{ Color.parseColor(_pressed)}), GG, null);
+		_view.setBackground(RE);
 	}
 	
 	

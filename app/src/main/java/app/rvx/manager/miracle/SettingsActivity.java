@@ -22,11 +22,9 @@ import android.view.View.*;
 import android.view.animation.*;
 import android.webkit.*;
 import android.widget.*;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 import androidx.annotation.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -51,7 +49,6 @@ public class SettingsActivity extends AppCompatActivity {
 	private LinearLayout linear2;
 	private LinearLayout linear4;
 	private LinearLayout linear5;
-	private Switch switch1;
 	private LinearLayout linear3;
 	private TextView textview1;
 	private ImageView imageview1;
@@ -84,7 +81,6 @@ public class SettingsActivity extends AppCompatActivity {
 		linear2 = findViewById(R.id.linear2);
 		linear4 = findViewById(R.id.linear4);
 		linear5 = findViewById(R.id.linear5);
-		switch1 = findViewById(R.id.switch1);
 		linear3 = findViewById(R.id.linear3);
 		textview1 = findViewById(R.id.textview1);
 		imageview1 = findViewById(R.id.imageview1);
@@ -102,19 +98,6 @@ public class SettingsActivity extends AppCompatActivity {
 		linear12 = findViewById(R.id.linear12);
 		textview6 = findViewById(R.id.textview6);
 		Settings = getSharedPreferences("getSettings", Activity.MODE_PRIVATE);
-		
-		switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton _param1, boolean _param2) {
-				final boolean _isChecked = _param2;
-				if (_isChecked) {
-					_DarkTheme();
-				}
-				else {
-					_LightTheme();
-				}
-			}
-		});
 		
 		linear3.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -169,7 +152,12 @@ public class SettingsActivity extends AppCompatActivity {
 	}
 	
 	private void initializeLogic() {
-		_LightTheme();
+		if (Settings.getString("themes", "").equals("light")) {
+			_LightTheme();
+		}
+		else {
+			_DarkTheme();
+		}
 		_changeActivityFont("en_medium");
 		textview4.setText(Settings.getString("UserName", ""));
 		linear8.setVisibility(View.GONE);

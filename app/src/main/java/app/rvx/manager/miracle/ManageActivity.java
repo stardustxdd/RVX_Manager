@@ -24,13 +24,10 @@ import android.view.View.*;
 import android.view.animation.*;
 import android.webkit.*;
 import android.widget.*;
-import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
-import android.widget.Switch;
 import android.widget.TextView;
 import androidx.annotation.*;
 import androidx.appcompat.app.AppCompatActivity;
@@ -93,6 +90,9 @@ public class ManageActivity extends AppCompatActivity {
 	private boolean updateDialog = false;
 	private boolean officialYT = false;
 	private boolean officialYM = false;
+	private String RVXMANAGERVC = "";
+	private double RvxVC = 0;
+	private String RVXMANAGERV = "";
 	
 	private LinearLayout linear1;
 	private ScrollView vscroll1;
@@ -108,12 +108,13 @@ public class ManageActivity extends AppCompatActivity {
 	private LinearLayout linear43;
 	private LinearLayout linear70;
 	private LinearLayout linear71;
-	private Button button1;
-	private Switch switch1;
 	private LinearLayout linear44;
 	private LinearLayout linear45;
 	private TextView textview1;
+	private LinearLayout linear84;
+	private LinearLayout linear83;
 	private LinearLayout linear46;
+	private ImageView imageview20;
 	private ImageView imageview7;
 	private LinearLayout linear69;
 	private LinearLayout linear6;
@@ -256,12 +257,13 @@ public class ManageActivity extends AppCompatActivity {
 		linear43 = findViewById(R.id.linear43);
 		linear70 = findViewById(R.id.linear70);
 		linear71 = findViewById(R.id.linear71);
-		button1 = findViewById(R.id.button1);
-		switch1 = findViewById(R.id.switch1);
 		linear44 = findViewById(R.id.linear44);
 		linear45 = findViewById(R.id.linear45);
 		textview1 = findViewById(R.id.textview1);
+		linear84 = findViewById(R.id.linear84);
+		linear83 = findViewById(R.id.linear83);
 		linear46 = findViewById(R.id.linear46);
+		imageview20 = findViewById(R.id.imageview20);
 		imageview7 = findViewById(R.id.imageview7);
 		linear69 = findViewById(R.id.linear69);
 		linear6 = findViewById(R.id.linear6);
@@ -376,84 +378,20 @@ public class ManageActivity extends AppCompatActivity {
 		net = new RequestNetwork(this);
 		Connection = new RequestNetwork(this);
 		
-		button1.setOnClickListener(new View.OnClickListener() {
+		linear84.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View _view) {
-				if (!Response.get("YT_VERSION").toString().trim().equals(YTVersionName.trim())) {
-					final com.google.android.material.bottomsheet.BottomSheetDialog bottomSheetDialog = new com.google.android.material.bottomsheet.BottomSheetDialog(ManageActivity.this);
-					
-					View bottomSheetView; bottomSheetView = getLayoutInflater().inflate(R.layout.updaten,null );
-					bottomSheetDialog.setContentView(bottomSheetView);
-					
-					bottomSheetDialog.getWindow().findViewById(R.id.design_bottom_sheet).setBackgroundResource(android.R.color.transparent);
-					TextView t1 = (TextView) bottomSheetView.findViewById(R.id.t1);
-					
-					TextView t2 = (TextView) bottomSheetView.findViewById(R.id.t2);
-					
-					TextView b1 = (TextView) bottomSheetView.findViewById(R.id.b1);
-					
-					TextView b2 = (TextView) bottomSheetView.findViewById(R.id.b2);
-					
-					TextView t3 = (TextView) bottomSheetView.findViewById(R.id.t3);
-					
-					TextView t4 = (TextView) bottomSheetView.findViewById(R.id.t4);
-					
-					ImageView i1 = (ImageView) bottomSheetView.findViewById(R.id.i1);
-					
-					LinearLayout bg1 = (LinearLayout) bottomSheetView.findViewById(R.id.bg1);
-					
-					LinearLayout bg2 = (LinearLayout) bottomSheetView.findViewById(R.id.bg2);
-					
-					LinearLayout card = (LinearLayout) bottomSheetView.findViewById(R.id.card);
-					t1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
-					t2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), 0);
-					b1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
-					b2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
-					t3.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
-					t4.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), 0);
-					t4.setText("Version ".concat(Response.get("RVX_MANAGER_VERSION").toString()));
-					t2.setText(Response.get("RVX_MANAGER_WHATS_NEW").toString());
-					_RoundAndBorder(bg1, "#FFFFFF", 0, "#000000", 15);
-					_RoundAndBorder(bg2, "#FFFFFF", 0, "#000000", 15);
-					_addCardView(card, 0, 15, 0, 0, true, "#FFFFFF");
-					_rippleRoundStroke(b2, "#FFFFFF", "#EEEEEE", 15, 2.5d, "#EEEEEE");
-					_rippleRoundStroke(b1, "#304EFF", "#40FFFFFF", 15, 0, "#000000");
-					if (Settings.getString("themes", "").equals("black")) {
-						t1.setTextColor(0xFFFFFFFF);
-						t3.setTextColor(0xFFFFFFFF);
-						t2.setTextColor(0xFFE0E0E0);
-						t4.setTextColor(0xFFE0E0E0);
-						_rippleRoundStroke(bg1, "#454545", "#000000", 15, 0, "#000000");
-						_rippleRoundStroke(bg2, "#454545", "#000000", 15, 0, "#000000");
-					}
-					b1.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
-							bottomSheetDialog.dismiss();
-							Intent in_tent = new Intent();
-							in_tent.setClass(getApplicationContext(), UpdateActivity.class);
-							startActivity(in_tent);
-							com.blogspot.atifsoftwares.animatoolib.Animatoo.animateFade(ManageActivity.this);
-						}
-					});
-					b2.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
-							SketchwareUtil.showMessage(getApplicationContext(), "This Update Is Necessary !");
-						}
-					});
-					bottomSheetDialog.setCancelable(false);
-					updateDialog = true;
-					bottomSheetDialog.show();
-				}
-			}
-		});
-		
-		switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(CompoundButton _param1, boolean _param2) {
-				final boolean _isChecked = _param2;
-				if (_isChecked) {
+				if (Settings.getString("themes", "").equals("light")) {
+					Settings.edit().putString("themes", "black").commit();
 					_DarkTheme();
+					imageview20.setImageResource(R.drawable.ic_brightness);
+					imageview7.setImageResource(R.drawable.ic_more_white);
 				}
 				else {
+					Settings.edit().putString("themes", "light").commit();
 					_LightTheme();
+					imageview20.setImageResource(R.drawable.ic_moon_stars);
+					imageview7.setImageResource(R.drawable.ic_more_black);
 				}
 			}
 		});
@@ -469,6 +407,15 @@ public class ManageActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View _view) {
 				_Popup();
+			}
+		});
+		
+		linear8.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View _view) {
+				_AppInfo();
+				_FetchRequest();
+				_telegramLoaderDialog(true);
 			}
 		});
 		
@@ -849,7 +796,7 @@ dialog1.dismiss();
 						MGDnLink = Response.get("MG_DOWNLOAD_LINK").toString();
 						MGWhN = Response.get("MG_WHATS_NEW").toString();
 						MGVersionR = Response.get("MG_VERSION").toString();
-						if (Integer.parseInt(Response.get("RVX_MANAGER_VERSION_CODE").toString()) == 22) {
+						if (RvxVC < Integer.parseInt(Response.get("RVX_MANAGER_VERSION_CODE").toString())) {
 							final com.google.android.material.bottomsheet.BottomSheetDialog bottomSheetDialog = new com.google.android.material.bottomsheet.BottomSheetDialog(ManageActivity.this);
 							
 							View bottomSheetView; bottomSheetView = getLayoutInflater().inflate(R.layout.updaten,null );
@@ -891,6 +838,7 @@ dialog1.dismiss();
 							_rippleRoundStroke(b2, "#FFFFFF", "#EEEEEE", 15, 2.5d, "#EEEEEE");
 							_rippleRoundStroke(b1, "#304EFF", "#40FFFFFF", 15, 0, "#000000");
 							if (Settings.getString("themes", "").equals("black")) {
+								i1.setBackgroundColor(0xFF454545);
 								t1.setTextColor(0xFFFFFFFF);
 								t3.setTextColor(0xFFFFFFFF);
 								t2.setTextColor(0xFFE0E0E0);
@@ -913,6 +861,76 @@ dialog1.dismiss();
 							bottomSheetDialog.setCancelable(false);
 							updateDialog = true;
 							bottomSheetDialog.show();
+						}
+						if (!updateDialog) {
+							if (officialYM) {
+								if (!Response.get("YM_VERSION").toString().trim().equals(YMVersionName.trim())) {
+									final com.google.android.material.bottomsheet.BottomSheetDialog bottomSheetDialog = new com.google.android.material.bottomsheet.BottomSheetDialog(ManageActivity.this);
+									
+									View bottomSheetView; bottomSheetView = getLayoutInflater().inflate(R.layout.updaten,null );
+									bottomSheetDialog.setContentView(bottomSheetView);
+									
+									bottomSheetDialog.getWindow().findViewById(R.id.design_bottom_sheet).setBackgroundResource(android.R.color.transparent);
+									TextView t1 = (TextView) bottomSheetView.findViewById(R.id.t1);
+									
+									TextView t2 = (TextView) bottomSheetView.findViewById(R.id.t2);
+									
+									TextView b1 = (TextView) bottomSheetView.findViewById(R.id.b1);
+									
+									TextView b2 = (TextView) bottomSheetView.findViewById(R.id.b2);
+									
+									TextView t3 = (TextView) bottomSheetView.findViewById(R.id.t3);
+									
+									TextView t4 = (TextView) bottomSheetView.findViewById(R.id.t4);
+									
+									ImageView i1 = (ImageView) bottomSheetView.findViewById(R.id.i1);
+									
+									LinearLayout bg1 = (LinearLayout) bottomSheetView.findViewById(R.id.bg1);
+									
+									LinearLayout bg2 = (LinearLayout) bottomSheetView.findViewById(R.id.bg2);
+									
+									LinearLayout card = (LinearLayout) bottomSheetView.findViewById(R.id.card);
+									t1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+									t2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), 0);
+									b1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+									b2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+									t3.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+									t4.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), 0);
+									i1.setImageResource(R.drawable.ic_rvx_ym);
+									t3.setText("RVX Music");
+									t4.setText("Version ".concat(Response.get("YM_VERSION").toString()));
+									t2.setText(Response.get("YM_WHATS_NEW").toString());
+									_RoundAndBorder(bg1, "#FFFFFF", 0, "#000000", 15);
+									_RoundAndBorder(bg2, "#FFFFFF", 0, "#000000", 15);
+									_addCardView(card, 0, 15, 0, 0, true, "#FFFFFF");
+									_rippleRoundStroke(b2, "#FFFFFF", "#EEEEEE", 15, 2.5d, "#EEEEEE");
+									_rippleRoundStroke(b1, "#304EFF", "#40FFFFFF", 15, 0, "#000000");
+									if (Settings.getString("themes", "").equals("black")) {
+										i1.setBackgroundColor(0xFF454545);
+										t1.setTextColor(0xFFFFFFFF);
+										t3.setTextColor(0xFFFFFFFF);
+										t2.setTextColor(0xFFE0E0E0);
+										t4.setTextColor(0xFFE0E0E0);
+										_rippleRoundStroke(bg1, "#454545", "#000000", 15, 0, "#000000");
+										_rippleRoundStroke(bg2, "#454545", "#000000", 15, 0, "#000000");
+									}
+									b2.setVisibility(View.GONE);
+									b1.setText("Okay I'll update !");
+									b1.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
+											bottomSheetDialog.dismiss();
+											SketchwareUtil.showMessage(getApplicationContext(), "Don't forget to update the RVX Music !");
+											
+										}
+									});
+									b2.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
+											SketchwareUtil.showMessage(getApplicationContext(), "This Update Is Necessary !");
+										}
+									});
+									bottomSheetDialog.setCancelable(false);
+									updateDialog = true;
+									bottomSheetDialog.show();
+								}
+							}
 						}
 						if (!updateDialog) {
 							if (officialYT) {
@@ -958,6 +976,7 @@ dialog1.dismiss();
 									_rippleRoundStroke(b2, "#FFFFFF", "#EEEEEE", 15, 2.5d, "#EEEEEE");
 									_rippleRoundStroke(b1, "#304EFF", "#40FFFFFF", 15, 0, "#000000");
 									if (Settings.getString("themes", "").equals("black")) {
+										i1.setBackgroundColor(0xFF454545);
 										t1.setTextColor(0xFFFFFFFF);
 										t3.setTextColor(0xFFFFFFFF);
 										t2.setTextColor(0xFFE0E0E0);
@@ -965,12 +984,12 @@ dialog1.dismiss();
 										_rippleRoundStroke(bg1, "#454545", "#000000", 15, 0, "#000000");
 										_rippleRoundStroke(bg2, "#454545", "#000000", 15, 0, "#000000");
 									}
+									b2.setVisibility(View.GONE);
+									b1.setText("Okay I'll update !");
 									b1.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
 											bottomSheetDialog.dismiss();
-											Intent in_tent = new Intent();
-											in_tent.setClass(getApplicationContext(), UpdateActivity.class);
-											startActivity(in_tent);
-											com.blogspot.atifsoftwares.animatoolib.Animatoo.animateFade(ManageActivity.this);
+											SketchwareUtil.showMessage(getApplicationContext(), "Don't forget to update the RVX YouTube !");
+											
 										}
 									});
 									b2.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
@@ -983,6 +1002,75 @@ dialog1.dismiss();
 								}
 							}
 						}
+						if (!updateDialog) {
+							if (!Response.get("MG_VERSION").toString().trim().equals(MGVersionR.trim())) {
+								final com.google.android.material.bottomsheet.BottomSheetDialog bottomSheetDialog = new com.google.android.material.bottomsheet.BottomSheetDialog(ManageActivity.this);
+								
+								View bottomSheetView; bottomSheetView = getLayoutInflater().inflate(R.layout.updaten,null );
+								bottomSheetDialog.setContentView(bottomSheetView);
+								
+								bottomSheetDialog.getWindow().findViewById(R.id.design_bottom_sheet).setBackgroundResource(android.R.color.transparent);
+								TextView t1 = (TextView) bottomSheetView.findViewById(R.id.t1);
+								
+								TextView t2 = (TextView) bottomSheetView.findViewById(R.id.t2);
+								
+								TextView b1 = (TextView) bottomSheetView.findViewById(R.id.b1);
+								
+								TextView b2 = (TextView) bottomSheetView.findViewById(R.id.b2);
+								
+								TextView t3 = (TextView) bottomSheetView.findViewById(R.id.t3);
+								
+								TextView t4 = (TextView) bottomSheetView.findViewById(R.id.t4);
+								
+								ImageView i1 = (ImageView) bottomSheetView.findViewById(R.id.i1);
+								
+								LinearLayout bg1 = (LinearLayout) bottomSheetView.findViewById(R.id.bg1);
+								
+								LinearLayout bg2 = (LinearLayout) bottomSheetView.findViewById(R.id.bg2);
+								
+								LinearLayout card = (LinearLayout) bottomSheetView.findViewById(R.id.card);
+								t1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+								t2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), 0);
+								b1.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+								b2.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+								t3.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_medium.ttf"), 0);
+								t4.setTypeface(Typeface.createFromAsset(getAssets(),"fonts/en_light.ttf"), 0);
+								i1.setImageResource(R.drawable.ic_mcg_mg);
+								t3.setText("Vanced MicroG");
+								t4.setText("Version ".concat(Response.get("MG_VERSION").toString()));
+								t2.setText(Response.get("MG_WHATS_NEW").toString());
+								_RoundAndBorder(bg1, "#FFFFFF", 0, "#000000", 15);
+								_RoundAndBorder(bg2, "#FFFFFF", 0, "#000000", 15);
+								_addCardView(card, 0, 15, 0, 0, true, "#FFFFFF");
+								_rippleRoundStroke(b2, "#FFFFFF", "#EEEEEE", 15, 2.5d, "#EEEEEE");
+								_rippleRoundStroke(b1, "#304EFF", "#40FFFFFF", 15, 0, "#000000");
+								if (Settings.getString("themes", "").equals("black")) {
+									i1.setBackgroundColor(0xFF454545);
+									t1.setTextColor(0xFFFFFFFF);
+									t3.setTextColor(0xFFFFFFFF);
+									t2.setTextColor(0xFFE0E0E0);
+									t4.setTextColor(0xFFE0E0E0);
+									_rippleRoundStroke(bg1, "#454545", "#000000", 15, 0, "#000000");
+									_rippleRoundStroke(bg2, "#454545", "#000000", 15, 0, "#000000");
+								}
+								b2.setVisibility(View.GONE);
+								b1.setText("Okay I'll update !");
+								b1.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
+										bottomSheetDialog.dismiss();
+										SketchwareUtil.showMessage(getApplicationContext(), "Don't forget to update the Vanced YouTube !");
+										
+									}
+								});
+								b2.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
+										SketchwareUtil.showMessage(getApplicationContext(), "This Update Is Necessary !");
+									}
+								});
+								bottomSheetDialog.setCancelable(false);
+								updateDialog = true;
+								bottomSheetDialog.show();
+							}
+						}
+						_Save();
 					}catch(Exception e){
 						SketchwareUtil.showMessage(getApplicationContext(), "Unable to load data from server !");
 					}
@@ -1046,10 +1134,24 @@ dialog1.dismiss();
 	}
 	
 	private void initializeLogic() {
-		Settings.edit().putString("themes", "light").commit();
-		_LightTheme();
-		_FetchRequest();
-		_telegramLoaderDialog(false);
+		if (Settings.getString("themes", "").equals("")) {
+			Settings.edit().putString("themes", "light").commit();
+			_LightTheme();
+		}
+		else {
+			if (Settings.getString("themes", "").equals("light")) {
+				_LightTheme();
+				imageview20.setImageResource(R.drawable.ic_moon_stars);
+				imageview7.setImageResource(R.drawable.ic_more_black);
+			}
+			else {
+				_DarkTheme();
+				_ColorFilter(imageview7, "#ffffff");
+				imageview20.setImageResource(R.drawable.ic_brightness);
+				imageview7.setImageResource(R.drawable.ic_more_white);
+			}
+		}
+		_telegramLoaderDialog(true);
 		downloading = false;
 		pause = false;
 		RVXYtPkg = "app.rvx.android.youtube";
@@ -1063,6 +1165,7 @@ dialog1.dismiss();
 		YTUrl = "https://github.com/inotia00/VancedMicroG/releases/download/v0.2.27.230755/microg.apk";
 		_DownloadLogic();
 		_AppInfo();
+		_FetchRequest();
 		Resources res = getResources();
 		progressbar1.setProgressDrawable(res.getDrawable( R.drawable.gradient_progress));
 		Calendar c = Calendar.getInstance();
@@ -1211,6 +1314,7 @@ dialog1.dismiss();
 		_GradientDrawable(linear68, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
 		_GradientDrawable(linear76, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
 		_GradientDrawable(linear82, 25, 00, 00, "#eeeeee", "#ffffff", false, true, 1000);
+		_GradientDrawable(linear84, 25, 00, 00, "#eeeeee", "#ffffff", false, true, 1000);
 		_ColorFilterLight();
 		_IconColorUpDown();
 	}
@@ -1228,6 +1332,7 @@ dialog1.dismiss();
 		vscroll1.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)00, 0xFF000000));
 		linear3.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
 		linear5.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
+		linear8.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)50, 0xFF304FFE));
 		linear10.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
 		linear20.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
 		linear43.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
@@ -1288,6 +1393,7 @@ dialog1.dismiss();
 		_GradientDrawable(linear68, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
 		_GradientDrawable(linear76, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
 		_GradientDrawable(linear82, 25, 00, 00, "#000000", "#ffffff", false, true, 1000);
+		_GradientDrawable(linear84, 25, 00, 00, "#000000", "#ffffff", false, true, 1000);
 		_ColorFilter(imageview7, "#ffffff");
 		_IconColorUpDown();
 	}
@@ -3695,9 +3801,19 @@ dialog1.dismiss();
 	
 	
 	public void _AppInfo() {
+		linear52.setVisibility(View.GONE);
+		linear50.setVisibility(View.GONE);
+		linear48.setVisibility(View.GONE);
+		linear54.setVisibility(View.GONE);
+		linear56.setVisibility(View.GONE);
+		linear58.setVisibility(View.GONE);
+		linear62.setVisibility(View.GONE);
+		linear64.setVisibility(View.GONE);
+		linear66.setVisibility(View.GONE);
 		ApkUtils apk = new ApkUtils(ManageActivity.this);
 		ApkUtils qapk = new ApkUtils(ManageActivity.this);
 		ApkUtils rapk = new ApkUtils(ManageActivity.this);
+		ApkUtils sapk = new ApkUtils(ManageActivity.this);
 		try{
 			apk.setPackageName(RVXYtPkg);
 		}catch(Exception e){
@@ -3712,6 +3828,9 @@ dialog1.dismiss();
 			if (YTSHA256.toLowerCase().equals("301a91e1fb5ec0d3462d6f6134b9f2d9b6dfed4d998c24ee04529c3dd7553c67")) {
 				textview15.setText(YTVersionName);
 				officialYT = true;
+				linear52.setVisibility(View.VISIBLE);
+				linear50.setVisibility(View.VISIBLE);
+				linear48.setVisibility(View.VISIBLE);
 			}
 			else {
 				textview15.setText("Signature Mismatch, Please uninstall\n ReVanced Extended APK.");
@@ -3730,7 +3849,10 @@ dialog1.dismiss();
 		else {
 			if (YMSHA256.toLowerCase().equals("301a91e1fb5ec0d3462d6f6134b9f2d9b6dfed4d998c24ee04529c3dd7553c67")) {
 				textview21.setText(YMVersionName);
-				officialYT = true;
+				officialYM = true;
+				linear54.setVisibility(View.VISIBLE);
+				linear56.setVisibility(View.VISIBLE);
+				linear58.setVisibility(View.VISIBLE);
 			}
 			else {
 				textview21.setText("Signature Mismatch, Please uninstall\n ReVanced Extended Music APK.");
@@ -3747,6 +3869,21 @@ dialog1.dismiss();
 		}
 		else {
 			textview27.setText(MGVersionName);
+			linear62.setVisibility(View.VISIBLE);
+			linear64.setVisibility(View.VISIBLE);
+			linear66.setVisibility(View.VISIBLE);
+		}
+		try{
+			sapk.setPackageName("app.rvx.manager.miracle");
+		}catch(Exception e){
+			 
+		}
+		RVXMANAGERVC = sapk.getVersionCode();
+		RVXMANAGERV = sapk.getVersionName();
+		if (!RVXMANAGERVC.equals("null")) {
+			RvxVC = Integer.parseInt(RVXMANAGERVC);
+			Settings.edit().putString("RVXMVC", RVXMANAGERVC).commit();
+			Settings.edit().putString("RVXMV", RVXMANAGERV).commit();
 		}
 	}
 	
@@ -3811,7 +3948,6 @@ dialog1.dismiss();
 	
 	
 	public void _ColorFilterLight() {
-		_ColorFilter(imageview7, "#000000");
 		_ColorFilter(imageview8, "#304FFE");
 		_ColorFilter(imageview9, "#304FFE");
 		_ColorFilter(imageview10, "#304FFE");
@@ -3892,6 +4028,14 @@ dialog1.dismiss();
 		}else{
 			
 		}
+	}
+	
+	
+	public void _Save() {
+		Settings.edit().putString("RVX_MANAGER_VERSION", Response.get("RVX_MANAGER_VERSION").toString()).commit();
+		Settings.edit().putString("RVX_MANAGER_VERSION_CODE", Response.get("RVX_MANAGER_VERSION_CODE").toString()).commit();
+		Settings.edit().putString("RVX_MANAGER_DOWNLOAD_LINK", Response.get("RVX_MANAGER_DOWNLOAD_LINK").toString()).commit();
+		Settings.edit().putString("RVX_MANAGER_WHATS_NEW", Response.get("RVX_MANAGER_WHATS_NEW").toString()).commit();
 	}
 	
 	

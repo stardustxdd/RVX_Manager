@@ -30,7 +30,7 @@
 					android:id="@+id/imageview1"
 					android:layout_width="20dp"
 					android:layout_height="20dp"
-					android:src="@drawable/ic_angle_circle_left"
+					android:src="@drawable/ic_angles_circle_left"
 					android:scaleType="fitCenter" />
 			</LinearLayout>
 			<TextView
@@ -48,7 +48,14 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:padding="8dp"
-			android:orientation="horizontal" />
+			android:orientation="horizontal">
+			<LinearLayout
+				android:id="@+id/linear15"
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:padding="8dp"
+				android:orientation="vertical" />
+		</LinearLayout>
 		<LinearLayout
 			android:id="@+id/linear5"
 			android:layout_width="match_parent"
@@ -61,6 +68,7 @@
 				android:id="@+id/lottie1"
 				android:layout_width="300dp"
 				android:layout_height="300dp"
+				android:background="@android:color/transparent"
 				android:scaleType="fitCenter"
 				android:layout_centerInParent="true"
 				app:lottie_fileName="your_file.json"
@@ -84,6 +92,15 @@
 					android:textSize="18sp"
 					android:textStyle="bold"
 					android:textColor="#000000" />
+				<ProgressBar
+					android:id="@+id/progressbar1"
+					android:layout_width="match_parent"
+					android:layout_height="25dp"
+					android:paddingLeft="4dp"
+					android:paddingTop="10dp"
+					android:paddingBottom="10dp"
+					android:indeterminate="false"
+					style="?android:progressBarStyleHorizontal" />
 				<TextView
 					android:id="@+id/textview3"
 					android:layout_width="wrap_content"
@@ -164,6 +181,42 @@
 					</LinearLayout>
 				</LinearLayout>
 			</LinearLayout>
+		</LinearLayout>
+		<LinearLayout
+			android:id="@+id/linear13"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="8dp"
+			android:orientation="horizontal" />
+		<LinearLayout
+			android:id="@+id/linear14"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:padding="4dp"
+			android:background="#FFFFFF"
+			android:orientation="vertical">
+			<TextView
+				android:id="@+id/textview7"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingLeft="4dp"
+				android:paddingTop="4dp"
+				android:paddingRight="4dp"
+				android:paddingBottom="1dp"
+				android:text="What's New \?"
+				android:textSize="16sp"
+				android:textStyle="bold"
+				android:textColor="#000000" />
+			<TextView
+				android:id="@+id/textview8"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingLeft="4dp"
+				android:paddingRight="4dp"
+				android:paddingBottom="4dp"
+				android:text="..."
+				android:textSize="12sp"
+				android:textColor="#000000" />
 		</LinearLayout>
 	</LinearLayout>
 </LinearLayout>
