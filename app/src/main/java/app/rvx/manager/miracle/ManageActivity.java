@@ -108,6 +108,7 @@ public class ManageActivity extends AppCompatActivity {
 	private LinearLayout linear43;
 	private LinearLayout linear70;
 	private LinearLayout linear71;
+	private LinearLayout linear85;
 	private LinearLayout linear44;
 	private LinearLayout linear45;
 	private TextView textview1;
@@ -213,6 +214,13 @@ public class ManageActivity extends AppCompatActivity {
 	private ImageView imageview17;
 	private ImageView imageview18;
 	private ImageView imageview19;
+	private LinearLayout linear88;
+	private LinearLayout linear86;
+	private LinearLayout linear89;
+	private TextView textview33;
+	private TextView textview34;
+	private TextView textview35;
+	private TextView textview36;
 	private LinearLayout linear73;
 	private LinearLayout linear72;
 	private LinearLayout linear74;
@@ -257,6 +265,7 @@ public class ManageActivity extends AppCompatActivity {
 		linear43 = findViewById(R.id.linear43);
 		linear70 = findViewById(R.id.linear70);
 		linear71 = findViewById(R.id.linear71);
+		linear85 = findViewById(R.id.linear85);
 		linear44 = findViewById(R.id.linear44);
 		linear45 = findViewById(R.id.linear45);
 		textview1 = findViewById(R.id.textview1);
@@ -362,6 +371,13 @@ public class ManageActivity extends AppCompatActivity {
 		imageview17 = findViewById(R.id.imageview17);
 		imageview18 = findViewById(R.id.imageview18);
 		imageview19 = findViewById(R.id.imageview19);
+		linear88 = findViewById(R.id.linear88);
+		linear86 = findViewById(R.id.linear86);
+		linear89 = findViewById(R.id.linear89);
+		textview33 = findViewById(R.id.textview33);
+		textview34 = findViewById(R.id.textview34);
+		textview35 = findViewById(R.id.textview35);
+		textview36 = findViewById(R.id.textview36);
 		linear73 = findViewById(R.id.linear73);
 		linear72 = findViewById(R.id.linear72);
 		linear74 = findViewById(R.id.linear74);
@@ -1057,7 +1073,7 @@ dialog1.dismiss();
 								b1.setText("Okay I'll update !");
 								b1.setOnClickListener(new View.OnClickListener(){ public void onClick(View v){
 										bottomSheetDialog.dismiss();
-										SketchwareUtil.showMessage(getApplicationContext(), "Don't forget to update the Vanced YouTube !");
+										SketchwareUtil.showMessage(getApplicationContext(), "Don't forget to update the Vanced MicroG !");
 										
 									}
 								});
@@ -1265,6 +1281,7 @@ dialog1.dismiss();
 		linear20.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
 		linear43.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
 		linear71.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
+		linear86.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFFFFFFFF));
 		textview1.setTextColor(0xFF304FFE);
 		textview3.setTextColor(0xFF304FFE);
 		textview14.setTextColor(0xFF2962FF);
@@ -1291,6 +1308,10 @@ dialog1.dismiss();
 		textview29.setTextColor(0xFF000000);
 		textview30.setTextColor(0xFF000000);
 		textview31.setTextColor(0xFF000000);
+		textview33.setTextColor(0xFF304FFE);
+		textview34.setTextColor(0xFF000000);
+		textview35.setTextColor(0xFF000000);
+		textview36.setTextColor(0xFF000000);
 		textview32.setTextColor(0xFF000000);
 		_GradientDrawable(linear30, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
 		_GradientDrawable(linear31, 25, 00, 00, "#eeeeee", "#ffffff", true, true, 1000);
@@ -1337,6 +1358,7 @@ dialog1.dismiss();
 		linear20.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
 		linear43.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
 		linear71.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
+		linear86.setBackground(new GradientDrawable() { public GradientDrawable getIns(int a, int b) { this.setCornerRadius(a); this.setColor(b); return this; } }.getIns((int)25, 0xFF252525));
 		textview6.setTextColor(0xFFE0E0E0);
 		textview2.setTextColor(0xFFFFFFFF);
 		textview8.setTextColor(0xFFE0E0E0);
@@ -1370,6 +1392,10 @@ dialog1.dismiss();
 		textview29.setTextColor(0xFFFFFFFF);
 		textview30.setTextColor(0xFFFFFFFF);
 		textview31.setTextColor(0xFFFFFFFF);
+		textview33.setTextColor(0xFF8C9EFF);
+		textview34.setTextColor(0xFFFFFFFF);
+		textview35.setTextColor(0xFFFFFFFF);
+		textview36.setTextColor(0xFFFFFFFF);
 		textview32.setTextColor(0xFFFFFFFF);
 		_GradientDrawable(linear30, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
 		_GradientDrawable(linear31, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
@@ -1394,7 +1420,6 @@ dialog1.dismiss();
 		_GradientDrawable(linear76, 25, 00, 00, "#000000", "#ffffff", true, true, 1000);
 		_GradientDrawable(linear82, 25, 00, 00, "#000000", "#ffffff", false, true, 1000);
 		_GradientDrawable(linear84, 25, 00, 00, "#000000", "#ffffff", false, true, 1000);
-		_ColorFilter(imageview7, "#ffffff");
 		_IconColorUpDown();
 	}
 	
@@ -1573,6 +1598,10 @@ dialog1.dismiss();
 		linear35.setVisibility(View.GONE);
 		linear61.setVisibility(View.GONE);
 		linear71.setVisibility(View.GONE);
+		linear86.setVisibility(View.GONE);
+		textview34.setVisibility(View.GONE);
+		textview35.setVisibility(View.GONE);
+		textview36.setVisibility(View.GONE);
 	}
 	
 	
@@ -4036,6 +4065,29 @@ dialog1.dismiss();
 		Settings.edit().putString("RVX_MANAGER_VERSION_CODE", Response.get("RVX_MANAGER_VERSION_CODE").toString()).commit();
 		Settings.edit().putString("RVX_MANAGER_DOWNLOAD_LINK", Response.get("RVX_MANAGER_DOWNLOAD_LINK").toString()).commit();
 		Settings.edit().putString("RVX_MANAGER_WHATS_NEW", Response.get("RVX_MANAGER_WHATS_NEW").toString()).commit();
+		/*
+if (!YTVersionR.trim().equals(YTVersionName)) {
+linear86.setVisibility(View.VISIBLE);
+textview34.setVisibility(View.VISIBLE);
+}
+else {
+textview34.setVisibility(View.GONE);
+}
+if (!YMVersionR.trim().equals(YMVersionName)) {
+linear86.setVisibility(View.VISIBLE);
+textview35.setVisibility(View.VISIBLE);
+}
+else {
+textview35.setVisibility(View.GONE);
+}
+if (!MGVersionR.trim().equals(MGVersionName)) {
+linear86.setVisibility(View.VISIBLE);
+textview36.setVisibility(View.VISIBLE);
+}
+else {
+textview36.setVisibility(View.GONE);
+}
+*/
 	}
 	
 	
