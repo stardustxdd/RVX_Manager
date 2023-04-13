@@ -135,14 +135,18 @@ public class ManageActivity extends AppCompatActivity {
 	private TextView textview6;
 	private LinearLayout linear30;
 	private ImageView imageview3;
-	private LinearLayout linear17;
-	private LinearLayout linear18;
-	private TextView textview11;
-	private TextView textview12;
-	private TextView textview13;
-	private TextView textview14;
+	private LinearLayout linear92;
+	private LinearLayout linear91;
+	private LinearLayout linear90;
+	private LinearLayout linear93;
 	private TextView textview15;
+	private TextView textview11;
+	private LinearLayout linear94;
+	private TextView textview14;
+	private TextView textview12;
+	private LinearLayout linear95;
 	private TextView textview16;
+	private TextView textview13;
 	private LinearLayout linear52;
 	private LinearLayout linear51;
 	private LinearLayout linear50;
@@ -165,14 +169,19 @@ public class ManageActivity extends AppCompatActivity {
 	private TextView textview8;
 	private LinearLayout linear31;
 	private ImageView imageview4;
-	private LinearLayout linear27;
-	private LinearLayout linear28;
-	private TextView textview17;
-	private TextView textview19;
-	private TextView textview18;
+	private LinearLayout linear96;
+	private LinearLayout linear97;
+	private LinearLayout linear98;
+	private LinearLayout linear99;
+	private LinearLayout linear100;
 	private TextView textview20;
+	private TextView textview38;
+	private LinearLayout linear101;
 	private TextView textview21;
+	private TextView textview40;
+	private LinearLayout linear102;
 	private TextView textview22;
+	private TextView textview42;
 	private LinearLayout linear54;
 	private LinearLayout linear55;
 	private LinearLayout linear56;
@@ -195,14 +204,19 @@ public class ManageActivity extends AppCompatActivity {
 	private TextView textview10;
 	private LinearLayout linear39;
 	private ImageView imageview6;
-	private LinearLayout linear40;
-	private LinearLayout linear41;
-	private TextView textview23;
-	private TextView textview24;
-	private TextView textview25;
+	private LinearLayout linear103;
+	private LinearLayout linear104;
+	private LinearLayout linear105;
+	private LinearLayout linear106;
+	private LinearLayout linear107;
 	private TextView textview26;
+	private TextView textview44;
+	private LinearLayout linear108;
 	private TextView textview27;
+	private TextView textview46;
+	private LinearLayout linear109;
 	private TextView textview28;
+	private TextView textview48;
 	private LinearLayout linear62;
 	private LinearLayout linear63;
 	private LinearLayout linear64;
@@ -292,14 +306,18 @@ public class ManageActivity extends AppCompatActivity {
 		textview6 = findViewById(R.id.textview6);
 		linear30 = findViewById(R.id.linear30);
 		imageview3 = findViewById(R.id.imageview3);
-		linear17 = findViewById(R.id.linear17);
-		linear18 = findViewById(R.id.linear18);
-		textview11 = findViewById(R.id.textview11);
-		textview12 = findViewById(R.id.textview12);
-		textview13 = findViewById(R.id.textview13);
-		textview14 = findViewById(R.id.textview14);
+		linear92 = findViewById(R.id.linear92);
+		linear91 = findViewById(R.id.linear91);
+		linear90 = findViewById(R.id.linear90);
+		linear93 = findViewById(R.id.linear93);
 		textview15 = findViewById(R.id.textview15);
+		textview11 = findViewById(R.id.textview11);
+		linear94 = findViewById(R.id.linear94);
+		textview14 = findViewById(R.id.textview14);
+		textview12 = findViewById(R.id.textview12);
+		linear95 = findViewById(R.id.linear95);
 		textview16 = findViewById(R.id.textview16);
+		textview13 = findViewById(R.id.textview13);
 		linear52 = findViewById(R.id.linear52);
 		linear51 = findViewById(R.id.linear51);
 		linear50 = findViewById(R.id.linear50);
@@ -322,14 +340,19 @@ public class ManageActivity extends AppCompatActivity {
 		textview8 = findViewById(R.id.textview8);
 		linear31 = findViewById(R.id.linear31);
 		imageview4 = findViewById(R.id.imageview4);
-		linear27 = findViewById(R.id.linear27);
-		linear28 = findViewById(R.id.linear28);
-		textview17 = findViewById(R.id.textview17);
-		textview19 = findViewById(R.id.textview19);
-		textview18 = findViewById(R.id.textview18);
+		linear96 = findViewById(R.id.linear96);
+		linear97 = findViewById(R.id.linear97);
+		linear98 = findViewById(R.id.linear98);
+		linear99 = findViewById(R.id.linear99);
+		linear100 = findViewById(R.id.linear100);
 		textview20 = findViewById(R.id.textview20);
+		textview38 = findViewById(R.id.textview38);
+		linear101 = findViewById(R.id.linear101);
 		textview21 = findViewById(R.id.textview21);
+		textview40 = findViewById(R.id.textview40);
+		linear102 = findViewById(R.id.linear102);
 		textview22 = findViewById(R.id.textview22);
+		textview42 = findViewById(R.id.textview42);
 		linear54 = findViewById(R.id.linear54);
 		linear55 = findViewById(R.id.linear55);
 		linear56 = findViewById(R.id.linear56);
@@ -352,14 +375,19 @@ public class ManageActivity extends AppCompatActivity {
 		textview10 = findViewById(R.id.textview10);
 		linear39 = findViewById(R.id.linear39);
 		imageview6 = findViewById(R.id.imageview6);
-		linear40 = findViewById(R.id.linear40);
-		linear41 = findViewById(R.id.linear41);
-		textview23 = findViewById(R.id.textview23);
-		textview24 = findViewById(R.id.textview24);
-		textview25 = findViewById(R.id.textview25);
+		linear103 = findViewById(R.id.linear103);
+		linear104 = findViewById(R.id.linear104);
+		linear105 = findViewById(R.id.linear105);
+		linear106 = findViewById(R.id.linear106);
+		linear107 = findViewById(R.id.linear107);
 		textview26 = findViewById(R.id.textview26);
+		textview44 = findViewById(R.id.textview44);
+		linear108 = findViewById(R.id.linear108);
 		textview27 = findViewById(R.id.textview27);
+		textview46 = findViewById(R.id.textview46);
+		linear109 = findViewById(R.id.linear109);
 		textview28 = findViewById(R.id.textview28);
+		textview48 = findViewById(R.id.textview48);
 		linear62 = findViewById(R.id.linear62);
 		linear63 = findViewById(R.id.linear63);
 		linear64 = findViewById(R.id.linear64);
@@ -1299,12 +1327,12 @@ dialog1.dismiss();
 		textview11.setTextColor(0xFF000000);
 		textview12.setTextColor(0xFF000000);
 		textview13.setTextColor(0xFF000000);
-		textview17.setTextColor(0xFF000000);
-		textview18.setTextColor(0xFF000000);
-		textview19.setTextColor(0xFF000000);
-		textview23.setTextColor(0xFF000000);
-		textview24.setTextColor(0xFF000000);
-		textview25.setTextColor(0xFF000000);
+		
+		
+		
+		
+		
+		
 		textview29.setTextColor(0xFF000000);
 		textview30.setTextColor(0xFF000000);
 		textview31.setTextColor(0xFF000000);
@@ -1383,12 +1411,12 @@ dialog1.dismiss();
 		textview11.setTextColor(0xFFFFFFFF);
 		textview12.setTextColor(0xFFFFFFFF);
 		textview13.setTextColor(0xFFFFFFFF);
-		textview17.setTextColor(0xFFFFFFFF);
-		textview18.setTextColor(0xFFFFFFFF);
-		textview19.setTextColor(0xFFFFFFFF);
-		textview23.setTextColor(0xFFFFFFFF);
-		textview24.setTextColor(0xFFFFFFFF);
-		textview25.setTextColor(0xFFFFFFFF);
+		
+		
+		
+		
+		
+		
 		textview29.setTextColor(0xFFFFFFFF);
 		textview30.setTextColor(0xFFFFFFFF);
 		textview31.setTextColor(0xFFFFFFFF);
