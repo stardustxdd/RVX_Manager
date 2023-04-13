@@ -1327,12 +1327,12 @@ dialog1.dismiss();
 		textview11.setTextColor(0xFF000000);
 		textview12.setTextColor(0xFF000000);
 		textview13.setTextColor(0xFF000000);
-		
-		
-		
-		
-		
-		
+		textview38.setTextColor(0xFF000000);
+		textview40.setTextColor(0xFF000000);
+		textview42.setTextColor(0xFF000000);
+		textview44.setTextColor(0xFF000000);
+		textview46.setTextColor(0xFF000000);
+		textview48.setTextColor(0xFF000000);
 		textview29.setTextColor(0xFF000000);
 		textview30.setTextColor(0xFF000000);
 		textview31.setTextColor(0xFF000000);
@@ -1411,12 +1411,12 @@ dialog1.dismiss();
 		textview11.setTextColor(0xFFFFFFFF);
 		textview12.setTextColor(0xFFFFFFFF);
 		textview13.setTextColor(0xFFFFFFFF);
-		
-		
-		
-		
-		
-		
+		textview38.setTextColor(0xFFFFFFFF);
+		textview40.setTextColor(0xFFFFFFFF);
+		textview42.setTextColor(0xFFFFFFFF);
+		textview44.setTextColor(0xFFFFFFFF);
+		textview46.setTextColor(0xFFFFFFFF);
+		textview48.setTextColor(0xFFFFFFFF);
 		textview29.setTextColor(0xFFFFFFFF);
 		textview30.setTextColor(0xFFFFFFFF);
 		textview31.setTextColor(0xFFFFFFFF);
