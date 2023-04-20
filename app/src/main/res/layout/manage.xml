@@ -283,7 +283,7 @@
 									android:textColor="#000000" />
 							</LinearLayout>
 							<TextView
-								android:id="@+id/textview15"
+								android:id="@+id/textview14"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
 								android:text="..."
@@ -313,7 +313,7 @@
 									android:textColor="#000000" />
 							</LinearLayout>
 							<TextView
-								android:id="@+id/textview14"
+								android:id="@+id/textview15"
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
 								android:text="..."

@@ -139,10 +139,10 @@ public class ManageActivity extends AppCompatActivity {
 	private LinearLayout linear91;
 	private LinearLayout linear90;
 	private LinearLayout linear93;
-	private TextView textview15;
+	private TextView textview14;
 	private TextView textview11;
 	private LinearLayout linear94;
-	private TextView textview14;
+	private TextView textview15;
 	private TextView textview12;
 	private LinearLayout linear95;
 	private TextView textview16;
@@ -310,10 +310,10 @@ public class ManageActivity extends AppCompatActivity {
 		linear91 = findViewById(R.id.linear91);
 		linear90 = findViewById(R.id.linear90);
 		linear93 = findViewById(R.id.linear93);
-		textview15 = findViewById(R.id.textview15);
+		textview14 = findViewById(R.id.textview14);
 		textview11 = findViewById(R.id.textview11);
 		linear94 = findViewById(R.id.linear94);
-		textview14 = findViewById(R.id.textview14);
+		textview15 = findViewById(R.id.textview15);
 		textview12 = findViewById(R.id.textview12);
 		linear95 = findViewById(R.id.linear95);
 		textview16 = findViewById(R.id.textview16);
